@@ -19,3 +19,7 @@ CKEDITOR.inline('editable-title', {
     allowedContent: true
 });
 
+function darkmode() {
+    var body = document.body;
+    body.classList.toggle("dark-mode");
+  }
