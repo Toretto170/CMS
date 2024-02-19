@@ -35,8 +35,9 @@ a:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
+    margin-top: 24px;
     margin-bottom: 30px;
-    height: 899px;
+    height: 670px;
 }
 
 .editable-title {
@@ -51,7 +52,7 @@ a:hover {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    height: 699px;
+    height: 510px;
 }
 
 .btn {
