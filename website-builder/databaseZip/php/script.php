@@ -2,17 +2,13 @@
 $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
 
 
-/*  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    Verifica che sia stato caricato un file
-        if (!empty($_FILES['zipFile']['name'])) {
-        $zipFileName = $_FILES['zipFile']['name'];
-        $zipTmpName = $_FILES['zipFile']['tmp_name']; */
+//  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // Crea una cartella temporanea per l'estrazione
-        $extractFolder = "./cartella_temporanea";
+        // Creation of a temporary folder
+        $extractFolder = "./temporary_folder";
         mkdir($extractFolder);
 
-        // Esegui l'estrazione del file ZIP
+        // ZIP extraction
         $zip = new ZipArchive;
         if ($zip->open($filepath) === TRUE) {
             $zip->extractTo($extractFolder);
@@ -21,9 +17,9 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
             $html = file_get_contents($extractFolder . "/index.html");
             $css = file_get_contents($extractFolder . "/css/style.css");
 
-            //roba su db
             
             
+            //Database info
             $host = 'localhost';
             $username = 'root';
             $password = '';
@@ -34,13 +30,13 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
             if ($conn->connect_error) {
                 die('Connection failed : ' . $conn->connect_error);
             }
-            echo 'Connected successfully';
+            echo "Connected successfully \r\n";
 
             // Select the created database
             $conn->select_db($database);
 
             // SQL to create table
-            $sql_create_table = "CREATE TABLE IF NOT EXISTS zipponi (
+            $sql_create_table = "CREATE TABLE IF NOT EXISTS grapejsfiles (
                     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                     html LONGTEXT NOT NULL,
                     css LONGTEXT NOT NULL,
@@ -49,23 +45,23 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
 
 
             if ($conn->query($sql_create_table) === TRUE) {
-                echo "Table created successfully";
+                echo "Table created successfully \r\n";
             } else {
                 echo 'Error creating table: ' . $conn->error;
             }
 
 
-            // Escape dei dati prima di inserirli nella query
+            // Data escape before insertion
             $html = mysqli_real_escape_string($conn, $html);
             $css = mysqli_real_escape_string($conn, $css);
 
 
-            
+            //Inserting data into the database
 
-            $sql_insert_data = "INSERT INTO zipponi (html, css, reg_date) VALUES ('$html', '$css', NOW())";
+            $sql_insert_data = "INSERT INTO grapejsfiles (html, css, reg_date) VALUES ('$html', '$css', NOW())";
 
             if ($conn->query($sql_insert_data) === TRUE) {
-                echo 'New record created successfully';
+                echo "New record created successfully \r\n";
             } else {
                 echo 'Error: ' . $sql_insert_data . '<br>' . $conn->error;
             }
@@ -73,23 +69,20 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
             $conn->close();
             
             
-            //elimina file all'interno della cartella temporanea
+            //Deleting files in the temporary folder
             unlink($extractFolder . "/index.html");
             unlink($extractFolder . "/css/style.css");
 
 
 
-            // Elimina la cartella temporanea
+            // Deleting the temporary folder
             rmdir($extractFolder . "/css");
             rmdir($extractFolder);
 
-            echo "Caricamento completato con successo.";
+            echo "Upload successful.";
         } else {
-            echo "Errore durante l'estrazione del file ZIP.";
+            echo "Error during the ZIP extraction.";
         }
-/*     } else {
-        echo "Si prega di selezionare un file ZIP.";
-    } */
 //}
 
 ?>
