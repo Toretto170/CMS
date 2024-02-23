@@ -30,7 +30,7 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
             if ($conn->connect_error) {
                 die('Connection failed : ' . $conn->connect_error);
             }
-            echo "Connected successfully \r\n";
+            echo "Connected successfully. \r\n";
 
             // Select the created database
             $conn->select_db($database);
@@ -45,7 +45,7 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
 
 
             if ($conn->query($sql_create_table) === TRUE) {
-                echo "Table created successfully \r\n";
+                echo "Table created successfully. \r\n";
             } else {
                 echo 'Error creating table: ' . $conn->error;
             }
@@ -61,7 +61,7 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
             $sql_insert_data = "INSERT INTO grapejsfiles (html, css, reg_date) VALUES ('$html', '$css', NOW())";
 
             if ($conn->query($sql_insert_data) === TRUE) {
-                echo "New record created successfully \r\n";
+                echo "New record created successfully. \r\n";
             } else {
                 echo 'Error: ' . $sql_insert_data . '<br>' . $conn->error;
             }
