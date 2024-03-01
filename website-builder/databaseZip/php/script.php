@@ -1,9 +1,10 @@
 <?php
-$filepath = "../zipProva/grapesjs_template_1708599033792.zip";
 
 
-//  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+// Check if a file is uploaded
+if(isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] == 0) {
+    $uploadedFile = $_FILES['uploaded_file']['tmp_name'];
+        
         // Creation of a temporary folder
         $extractFolder = "./temporary_folder";
         mkdir($extractFolder);
@@ -83,6 +84,8 @@ $filepath = "../zipProva/grapesjs_template_1708599033792.zip";
         } else {
             echo "Error during the ZIP extraction.";
         }
-//}
+    } else {
+        echo "No file uploaded or an error occurred.";
+    }
 
 ?>

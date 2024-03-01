@@ -1,8 +1,11 @@
 
 const editor = grapesjs.init ({
     container: "#gjs",
+    plugins: [
+      'grapesjs-plugin-export'
+    ],
     fromElement: true,
-    height: '689px',
+    height: '698px',
     width: 'auto',
 
     // storage
@@ -75,26 +78,38 @@ editor.Panels.addPanel({
             </textarea>`)
             .open();
         },
-      }, {
-        id: 'save',
-        className: 'btn-open-export',
-        label: 'SAVE',
-        command: 'export-template',
-        context: 'export-template', // For grouping context of buttons from the same panel
       },{
         id:'Upload',
         className: 'btn-upload',
-        label:'UPLOAD',
+        label:'Upload',
         command:'upload',
       },{
         id:'Reset',
         className: 'btn-reset',
-        label:'RESET',
+        label:'Reset',
         command:'reset',
-      },
+      }
     ],
   });
+
+  var xd=document.getElementById("xd");
+  xd.addEventListener("click", function(){
+    var html = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="kek">kekxd</div>
+    </body>
+    </html>`
+    var css = `#kek{
+      color: blue;
+      background-color: green;
+  }`
   
-
-
-
+  editor.setComponents(html);
+  editor.setStyle(css);
+  })
