@@ -4,7 +4,7 @@
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "login";
+$dbname = "try";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -20,11 +20,101 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Query per inserire i dati nel database
-    $sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')";
+    // Controlla se l'username è già presente nel database
+    $sql_check_username = "SELECT * FROM users WHERE username='$username'";
+    $result_username = $conn->query($sql_check_username);
+    if ($result_username->num_rows > 0) {
+        echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email already taken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cannot complete the registration</h1>
+        <p>Your registration was unsuccessful. Please retry <a href="main.php">here</a> with a valid username/email.</p>
+    </div>
+</body>
+</html>';
+    } else {
+        // Controlla se l'email è già presente nel database
+        $sql_check_email = "SELECT * FROM users WHERE email='$email'";
+        $result_email = $conn->query($sql_check_email);
+        if ($result_email->num_rows > 0) {
+            echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email already taken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cannot complete the registration</h1>
+        <p>Your registration was unsuccessful. Please retry <a href="main.php">here</a> with a valid username/email.</p>
+    </div>
+</body>
+</html>';
+        } else {
+            // Query per inserire i dati nel database
+            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
-    if ($conn->query($sql) === TRUE) {
-        echo ' 
+            if ($conn->query($sql) === TRUE) {
+                echo '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,14 +151,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h1>Registration Successful</h1>
-        <p>Your registration was successful. You can now <a href="home.php">login</a> using your credentials.</p>
+        <p>Your registration was successful. You can now <a href="main.php">login</a> using your credentials.</p>
     </div>
 </body>
 </html>
 
 ';
-    } else {
-        echo "Errore durante la registrazione: " . $conn->error;
+            } else {
+                echo "Errore durante la registrazione: " . $conn->error;
+            }
+        }
     }
 }
 

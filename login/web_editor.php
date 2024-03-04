@@ -16,6 +16,7 @@
     <h1 id="title">Web Editor</h1>
 </div>
 
+
 <div id="blocks"></div>
 <script src="web_editor_script.js"></script>
 </body>

@@ -3,7 +3,7 @@
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "login";
+$dbname = "try";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -27,55 +27,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_password = $_POST['login_password'];
 
     // Query preparata per verificare le credenziali nel database
-    $stmt = $conn->prepare("SELECT id FROM user WHERE username=? AND password=?");
-    $stmt->bind_param("ss", $login_username, $login_password);
+    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username=?");
+    $stmt->bind_param("s", $login_username);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows == 1) {
-        // Utente autenticato con successo
-        session_start();
-        $_SESSION['loggedin'] = true;
-        // Puoi aggiungere qui eventuali altre informazioni sull'utente
-        header("location: home.php");
-        exit;
+        // Utente trovato, verifica la password
+        $stmt->bind_result($user_id, $stored_password);
+        $stmt->fetch();
+
+        if($login_password === $stored_password) {
+            // Utente autenticato con successo
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_id'] = $user_id;
+            // Puoi aggiungere qui eventuali altre informazioni sull'utente
+            header("location: home.php");
+            exit;
+        }
     } else {
-        // Credenziali non valide
-        echo '
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Error 401 - Unauthorized</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                text-align: center;
-            }
-            .error-container {
-                margin-top: 100px;
-            }
-            .error-container h1 {
-                font-size: 5rem;
-                color: #333;
-            }
-            .error-container p {
-                font-size: 1.2rem;
-                color: #666;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="error-container">
-            <h1>401</h1>
-            <p>Error: Unauthorized</p>
-            <p>Sorry, you are not authorized to access this page.</p>
-            <p>Please, Sign up  <a href="main.php">here</a>.</p>
-        </div>
-    </body>
-    </html>';
+        // Utente non trovato nel database
+        echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email already taken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You shall not pass!</h1>
+        <p> Please Sign Up <a href="main.php">here</a> and come join us!</p>
+    </div>
+</body>
+</html>';
     }
 
     $stmt->close();
@@ -83,3 +95,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Chiudi la connessione
 $conn->close();
+
