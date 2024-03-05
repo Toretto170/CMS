@@ -74,3 +74,36 @@
       position: relative;
       display: inline;
 }
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: block;
+  position: relative;
+  top: 100%;
+   left: 5px; 
+  background-color: white;
+  box-shadow: 0px 0px 100px rgba(20, 18, 18, 0.25);
+  padding: 1rem;
+  opacity: 0;
+  transition: all 0.5s ease;
+  font-size: 30px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 20;
+}
+.tabella-html{
+width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+ font-size: 30px;
+}
+.tabella-html th, .tabella-html td{
+  width: 33%;
+  padding: 10px;
+  border:  2px solid ;
+}
