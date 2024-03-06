@@ -225,6 +225,9 @@ $conn->close();
         });
     });
 
+    /*
+    Codice per l'upload 
+    
     $('#load').on('click', function () {
         $('#code-input').show();
     });
@@ -241,6 +244,8 @@ $conn->close();
         // Nascondi l'area di inserimento del codice
         $('#code-input').hide();
     });
+
+    */
 </script>
 </body>
 </html>
