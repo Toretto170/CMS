@@ -1,5 +1,7 @@
 <?php
-session_start(); // Avvia la sessione
+
+// avvia la sessione
+session_start(); 
 
 // Connessione al database
 $servername = "127.0.0.1";
@@ -23,11 +25,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 
 // Gestione dei dati del form di login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Preleva i dati inviati dal form
+    // Preleva i dati inviati dal login
     $login_username = $_POST['login_username'];
     $login_password = $_POST['login_password'];
 
-    // Query per verificare le credenziali nel database
+    // Query x verificare le credenziali presenti nel db
     $sql = "SELECT id, password FROM users WHERE username=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $login_username);
