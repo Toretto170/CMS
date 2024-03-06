@@ -137,15 +137,16 @@ $conn->close();
 </head>
 <body>
 <div id="top-bar">
+    <a href="./home.php"><img src="./img/home.png" id="home"></a>
     <img src="./img/save.png" id="save">
 
-login
+<!-- login
 <button id="load">Load your Code</button>
     <div id="code-input">
         <textarea id="html-input" placeholder="paste your html here"></textarea>
         <textarea id="css-input" placeholder="paste your css here"></textarea>
         <button id="apply-code"> Apply code</button>
-    </div>
+    </div> -->
 </div>
 <div id="gjs">
     <h1 id="title">Web Editor</h1>
