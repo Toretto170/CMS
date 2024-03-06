@@ -39,13 +39,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $html = mysqli_real_escape_string($conn, $html);
         $css = mysqli_real_escape_string($conn, $css);
 
-        // SQL per inserire il template associato all'utente
-        $sql_insert_data = "INSERT INTO templates (html, css, reg_date, user_id) VALUES ('$html', '$css', NOW(), '$user_id')";
-
-        if ($conn->query($sql_insert_data) === TRUE) {
-            echo "Nuovo record creato con successo. \r\n";
+        // Se è fornito l'ID del template, esegui un'operazione di aggiornamento
+        if(isset($_POST['template_id'])) {
+            $template_id = $_POST['template_id'];
+            $sql_update_data = "UPDATE templates SET html='$html', css='$css' WHERE id='$template_id' AND user_id='$user_id'";
+            if ($conn->query($sql_update_data) === TRUE) {
+                echo "Template aggiornato con successo. \r\n";
+            } else {
+                echo 'Errore: ' . $sql_update_data . '<br>' . $conn->error;
+            }
         } else {
-            echo 'Errore: ' . $sql_insert_data . '<br>' . $conn->error;
+            // Altrimenti, esegui un'operazione di inserimento di un nuovo template
+            $sql_insert_data = "INSERT INTO templates (html, css, reg_date, user_id) VALUES ('$html', '$css', NOW(), '$user_id')";
+            if ($conn->query($sql_insert_data) === TRUE) {
+                echo "Nuovo record creato con successo. \r\n";
+            } else {
+                echo 'Errore: ' . $sql_insert_data . '<br>' . $conn->error;
+            }
         }
     } else {
         echo "Errore: Dati non inviati correttamente.";
@@ -55,4 +65,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 
 echo "Upload eseguito con successo.";
+
 
