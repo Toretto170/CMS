@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 
 // Se l'ID del template non è fornito, crea un nuovo template e ottieni l'ID
 if (!isset($_GET['id'])) {
-    $sql = "INSERT INTO templates (html, css, user_id) VALUES ('', '', ?)";
+    $sql = "INSERT INTO templates (html, css, user_id, reg_date) VALUES ('', '', ?, NOW())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $_SESSION['user_id']);
     $stmt->execute();
@@ -58,11 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POS
     $css = mysqli_real_escape_string($conn, $css);
 
     // Esegui un'operazione di aggiornamento del template nel database
-    $sql_update_data = "UPDATE templates SET html='$html', css='$css' WHERE id='$template_id' AND user_id='".$_SESSION['user_id']."'";
-    if ($conn->query($sql_update_data) === TRUE) {
+    $sql_update_data = "UPDATE templates SET html=?, css=?, reg_date=NOW() WHERE id=? AND user_id=?";
+    $stmt = $conn->prepare($sql_update_data);
+    $stmt->bind_param("ssii", $html, $css, $template_id, $_SESSION['user_id']);
+    if ($stmt->execute()) {
         echo "Template aggiornato con successo. \r\n";
     } else {
-        echo 'Errore: ' . $sql_update_data . '<br>' . $conn->error;
+        echo 'Errore: ' . $conn->error;
     }
     exit;
 }
