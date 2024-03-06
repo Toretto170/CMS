@@ -40,8 +40,8 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Collection</title>
     <style>
-        /* Stili CSS per la tabella */
-        /* Questo è solo un esempio, puoi personalizzare i tuoi stili */
+        /* CSS x tabella */
+        
         table {
             border-collapse: collapse;
             width: 100%;
