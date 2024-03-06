@@ -2,7 +2,7 @@
 session_start();
 
 // Verifica se l'utente è loggato
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: main.php");
     exit;
 }
@@ -22,12 +22,23 @@ if ($conn->connect_error) {
 
 // Se l'ID del template non è fornito, crea un nuovo template e ottieni l'ID
 if (!isset($_GET['id'])) {
-    $sql = "INSERT INTO templates (html, css, user_id, reg_date) VALUES ('', '', ?, NOW())";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $_SESSION['user_id']);
-    $stmt->execute();
-    $template_id = $stmt->insert_id;
-    $stmt->close();
+    // Verifica se esiste già un template con HTML e CSS vuoti per l'utente corrente
+    $user_id = $_SESSION['user_id'];
+    $sql_check_template = "SELECT id FROM templates WHERE html='' AND css='' AND user_id='$user_id'";
+    $result_check_template = $conn->query($sql_check_template);
+    if ($result_check_template && $result_check_template->num_rows > 0) {
+        // Se esiste già un template con HTML e CSS vuoti, ottieni il suo ID
+        $row = $result_check_template->fetch_assoc();
+        $template_id = $row['id'];
+    } else {
+        // Altrimenti, inserisci un nuovo template con HTML e CSS vuoti
+        $sql = "INSERT INTO templates (html, css, user_id, reg_date) VALUES ('', '', ?, NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $_SESSION['user_id']);
+        $stmt->execute();
+        $template_id = $stmt->insert_id;
+        $stmt->close();
+    }
 } else {
     $template_id = $_GET['id'];
 }

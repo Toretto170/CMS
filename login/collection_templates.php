@@ -60,14 +60,14 @@ $conn->close();
 <h1>Template Collection</h1>
 <table>
     <tr>
-
+        <th>ID</th>
         <th>Last Save</th>
         <th>Actions</th>
     </tr>
     <?php
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-
+        echo "<td>" . $row['id'] . "</td>";
         echo "<td>" . $row['reg_date'] . "</td>";
         echo "<td><a href='web_editor.php?id=" . $row['id'] . "'>Edit</a></td>";
         echo "</tr>";
