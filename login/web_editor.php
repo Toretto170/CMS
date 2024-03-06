@@ -52,7 +52,46 @@ $result = $stmt->get_result();
 
 // Verifica se il template esiste
 if ($result->num_rows != 1) {
-    echo "Template non trovato.";
+    echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template not found</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+        text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+        color: #333;
+    }
+        p {
+        color: #666;
+        margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Seems like the template you are looking for is vanished!</h1>
+        <p> Please create a new one <a href="web_editor.php">here</a> or choose another one of yours <a href="collection_templates.php">!</p>
+    </div>
+</body>
+</html>';
     exit;
 }
 
@@ -97,9 +136,14 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="top-bar">
-<img id="save" src="./img/save.png">
-</div>
+<button id="save">Save your work</button>
+<button id="load">Load your Code</button>
+    <div id="code-input">
+        <textarea id="html-input" placeholder="paste your html here"></textarea>
+        <textarea id="css-input" placeholder="paste your css here"></textarea>
+        <button id="apply-code"> Apply code</button>
+    </div>
+
 <div id="gjs">
     <h1 id="title">Web Editor</h1>
 </div>
@@ -175,6 +219,23 @@ $conn->close();
                 console.error(xhr.responseText);
             }
         });
+    });
+
+    $('#load').on('click', function () {
+        $('#code-input').show();
+    });
+
+    // Aggiungi l'evento click al pulsante "Apply Code"
+    $('#apply-code').on('click', function () {
+        var htmlCode = $('#html-input').val();
+        var cssCode = $('#css-input').val();
+
+        // Applica il codice HTML e CSS al web editor
+        editor.setComponents(htmlCode);
+        editor.setStyle(cssCode);
+
+        // Nascondi l'area di inserimento del codice
+        $('#code-input').hide();
     });
 </script>
 </body>
