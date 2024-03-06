@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 
 // Preleva i template dell'utente corrente dal database
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT id, reg_date FROM templates WHERE user_id=?";
+$sql = "SELECT id, reg_date FROM templates WHERE user_id=? ORDER BY reg_date DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
