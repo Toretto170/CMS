@@ -97,8 +97,9 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<button id="save">Save your work</button>
-
+    <div id="top-bar">
+<img id="save" src="./img/save.png">
+</div>
 <div id="gjs">
     <h1 id="title">Web Editor</h1>
 </div>
