@@ -1,9 +1,11 @@
 <?php
+session_start(); // Avvia la sessione
+
 // Connessione al database
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "try";
+$dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -13,7 +15,6 @@ if ($conn->connect_error) {
 }
 
 // Controllo se l'utente è già loggato
-session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     // Utente già loggato, reindirizza alla pagina del web editor
     header("location: home.php");
@@ -26,25 +27,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_username = $_POST['login_username'];
     $login_password = $_POST['login_password'];
 
-    // Query preparata per verificare le credenziali nel database
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username=?");
+    // Query per verificare le credenziali nel database
+    $sql = "SELECT id, password FROM users WHERE username=?";
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $login_username);
     $stmt->execute();
-    $stmt->store_result();
+    $result = $stmt->get_result();
 
-    if ($stmt->num_rows == 1) {
+    if ($result->num_rows == 1) {
         // Utente trovato, verifica la password
-        $stmt->bind_result($user_id, $stored_password);
-        $stmt->fetch();
-
-        if($login_password === $stored_password) {
-            // Utente autenticato con successo
-            session_start();
+        $row = $result->fetch_assoc();
+        if($login_password === $row['password']) {
+            // Password corretta, impostazione delle variabili di sessione
             $_SESSION['loggedin'] = true;
-            $_SESSION['user_id'] = $user_id;
-            // Puoi aggiungere qui eventuali altre informazioni sull'utente
+            $_SESSION['user_id'] = $row['id'];
+            // Reindirizzamento alla home
             header("location: home.php");
             exit;
+        } else {
+            // Password non corretta
+            echo "Password errata.";
         }
     } else {
         // Utente non trovato nel database
@@ -93,6 +95,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-// Chiudi la connessione
 $conn->close();
-
+?>

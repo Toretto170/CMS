@@ -52,7 +52,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     <h1>Welcome!</h1>
     <p>Thank you for registering/logging in. You are now part of our community.</p>
     <p> This is your home page </p>
-    <p>If you want to explore your template, please do so <a href="collections_template.php">here</a>.</p>
+    <p>If you want to explore your template, please do so <a href="collection_templates.php">here</a>.</p>
     <p>If you want to create a new webpage, please do so  <a href="web_editor.php">here</a>.</p>
     <p>Logout <a href="logout.php">here</a>.</p>
 </div>

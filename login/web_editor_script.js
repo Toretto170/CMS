@@ -1,4 +1,3 @@
-
 const editor = grapesjs.init ({
     container: "#gjs",
     fromElement: true,
@@ -43,25 +42,3 @@ const editor = grapesjs.init ({
         ]
     }
 });
-
-//non sembra funzionare quando chiamo la funzione
-
-/* console.log("alo");
-var save = document.getElementById("save");
-save.addEventListener("click", function(){
-  var html = editor.getHtml();
-  var css = editor.getCss();
-
-
-// Effettuare una richiesta AJAX per inviare i testi al server PHP
-var xhr = new XMLHttpRequest();
-xhr.open('POST', 'db.php', true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        // Visualizzare la risposta del server (puoi gestire la risposta come preferisci)
-        alert(xhr.responseText);
-    }
-};
-xhr.send('html=' + encodeURIComponent(html) + '&css=' + encodeURIComponent(css));
-}); */

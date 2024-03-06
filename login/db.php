@@ -1,60 +1,58 @@
 <?php
-    //manca da mettere la validazione della connessione
-            
-    //Database info
-    $host = 'localhost';
-    $username = 'root';
-    $password = '';
-    $database = 'prova';
+session_start(); // Avvia la sessione
 
-    // Create connection
-    $conn = new mysqli($host, $username, $password, $database);
-    if ($conn->connect_error) {
-        die('Connection failed : ' . $conn->connect_error);
-    }
-    echo "Connected successfully. \r\n";
-    
-    // Select the created database
-    $conn->select_db($database);
+// Database info
+$host = '127.0.0.1';
+$username = 'root';
+$password = '';
+$database = 'login';
 
-    $html = $_POST['html'];
-    $css = $_POST['css'];
+// Creazione della connessione al database e validazione
+$conn = new mysqli($host, $username, $password, $database);
+if ($conn->connect_error) {
+    die('Connessione fallita : ' . $conn->connect_error);
+}
 
-    // SQL to create table
-    $sql_create_table = "CREATE TABLE IF NOT EXISTS htmlcss (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            html LONGTEXT NOT NULL,
-            css LONGTEXT NOT NULL,
-            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-            )";
+echo "Connessione riuscita. \r\n";
 
+// Seleziona il database
+$conn->select_db($database);
 
-    if ($conn->query($sql_create_table) === TRUE) {
-        echo "Table created successfully. \r\n";
+// Verifica se l'utente è autenticato
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // Se l'utente non è autenticato, reindirizza alla pagina di login
+    header("location: login.php");
+    exit;
+}
+
+// Prendi l'ID dell'utente dalla sessione
+$user_id = $_SESSION['user_id'];
+
+// Verifica se i dati del form sono stati inviati
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Assicurati che i dati siano stati inviati correttamente
+    if(isset($_POST['html']) && isset($_POST['css'])) {
+        $html = $_POST['html'];
+        $css = $_POST['css'];
+
+        // Escape dei dati prima dell'inserimento nel database per evitare SQL injection
+        $html = mysqli_real_escape_string($conn, $html);
+        $css = mysqli_real_escape_string($conn, $css);
+
+        // SQL per inserire il template associato all'utente
+        $sql_insert_data = "INSERT INTO templates (html, css, reg_date, user_id) VALUES ('$html', '$css', NOW(), '$user_id')";
+
+        if ($conn->query($sql_insert_data) === TRUE) {
+            echo "Nuovo record creato con successo. \r\n";
+        } else {
+            echo 'Errore: ' . $sql_insert_data . '<br>' . $conn->error;
+        }
     } else {
-        echo 'Error creating table: ' . $conn->error;
+        echo "Errore: Dati non inviati correttamente.";
     }
+}
 
+$conn->close();
 
-    // Data escape before insertion
-    $html = mysqli_real_escape_string($conn, $html);
-    $css = mysqli_real_escape_string($conn, $css);
+echo "Upload eseguito con successo.";
 
-
-    //Inserting data into the database
-
-    $sql_insert_data = "INSERT INTO htmlcss (html, css, reg_date) VALUES ('$html', '$css', NOW())";
-
-    if ($conn->query($sql_insert_data) === TRUE) {
-        echo "New record created successfully. \r\n";
-    } else {
-        echo 'Error: ' . $sql_insert_data . '<br>' . $conn->error;
-    }
-
-    $conn->close();
-    
-
-    echo "Upload successful.";
-    
-
-?>

@@ -4,7 +4,7 @@
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "try";
+$dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_check_username = "SELECT * FROM users WHERE username='$username'";
     $result_username = $conn->query($sql_check_username);
     if ($result_username->num_rows > 0) {
-        echo '<!DOCTYPE html>
+        echo '
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,7 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_check_email = "SELECT * FROM users WHERE email='$email'";
         $result_email = $conn->query($sql_check_email);
         if ($result_email->num_rows > 0) {
-            echo '<!DOCTYPE html>
+            echo '
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -155,7 +157,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
-
 ';
             } else {
                 echo "Errore durante la registrazione: " . $conn->error;

@@ -11,29 +11,29 @@
 
 </head>
 <body>
-<button id="save" onclick="provasave()">Prova Save</button>
+<button id="save" onclick="saveTemplate()">Save your work</button>
 <script>
-    function provasave(){
-  var html = editor.getHtml();
-  var css = editor.getCss();
+    function saveTemplate(){
+        var html = editor.getHtml();
+        var css = editor.getCss();
 
 
 // Effettuare una richiesta AJAX per inviare i testi al server PHP
-var xhr = new XMLHttpRequest();
-xhr.open('POST', 'db.php', true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        // Visualizzare la risposta del server (puoi gestire la risposta come preferisci)
-        alert(xhr.responseText);
-    }
-};
-xhr.send('html=' + encodeURIComponent(html) + '&css=' + encodeURIComponent(css));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'db.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send('html=' + encodeURIComponent(html) + '&css=' + encodeURIComponent(css));
 
 
-/* editor.setComponents(html);
-editor.setStyle(css); */
-};
+        /* editor.setComponents(html);
+        editor.setStyle(css); */
+    };
 
 </script>
 <div id="gjs">
