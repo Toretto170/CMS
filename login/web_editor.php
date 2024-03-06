@@ -47,6 +47,26 @@ if ($result->num_rows != 1) {
 
 $template_data = $result->fetch_assoc();
 
+// Se i dati del form sono stati inviati, esegui l'aggiornamento del template
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POST['css']) && !empty($_POST['html']) && !empty($_POST['css'])) {
+    // Assicurati che i dati siano stati inviati correttamente
+    $html = $_POST['html'];
+    $css = $_POST['css'];
+
+    // Escape dei dati prima dell'inserimento nel database per evitare SQL injection
+    $html = mysqli_real_escape_string($conn, $html);
+    $css = mysqli_real_escape_string($conn, $css);
+
+    // Esegui un'operazione di aggiornamento del template nel database
+    $sql_update_data = "UPDATE templates SET html='$html', css='$css' WHERE id='$template_id' AND user_id='".$_SESSION['user_id']."'";
+    if ($conn->query($sql_update_data) === TRUE) {
+        echo "Template aggiornato con successo. \r\n";
+    } else {
+        echo 'Errore: ' . $sql_update_data . '<br>' . $conn->error;
+    }
+    exit;
+}
+
 // Chiudi la connessione
 $stmt->close();
 $conn->close();
@@ -82,11 +102,11 @@ $conn->close();
         // storage
         storageManager: {
             type: 'remote',
-            autosave: true,
+            autosave: false,
             urlStore: 'local'
         },
 
-        //nessun pannello di default
+        // nessun pannello di default
         panels:{default: [] },
 
         // editor di blocchi
@@ -131,9 +151,9 @@ $conn->close();
 
         // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
         $.ajax({
-            url: 'db.php',
+            url: 'web_editor.php?id=<?php echo $template_id; ?>',
             method: 'POST',
-            data: { id: <?php echo $template_id; ?>, html: html, css: css },
+            data: { html: html, css: css },
             success: function (response) {
                 alert(response);
             },
