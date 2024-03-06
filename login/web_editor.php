@@ -136,14 +136,17 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<button id="save">Save your work</button>
+<div id="top-bar">
+    <img src="./img/save.png" id="save">
+
+login
 <button id="load">Load your Code</button>
     <div id="code-input">
         <textarea id="html-input" placeholder="paste your html here"></textarea>
         <textarea id="css-input" placeholder="paste your css here"></textarea>
         <button id="apply-code"> Apply code</button>
     </div>
-
+</div>
 <div id="gjs">
     <h1 id="title">Web Editor</h1>
 </div>
