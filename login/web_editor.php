@@ -142,13 +142,13 @@ $conn->close();
     <a href="home.php"><img src="img/home.png" id="home"></a>
     <img src="img/save.png" id="save">
 
-<!-- BLOCCO PER L'UPLOAD
-<button id="load">Load your Code</button>
-    <div id="code-input">
-        <textarea id="html-input" placeholder="paste your html here"></textarea>
-        <textarea id="css-input" placeholder="paste your css here"></textarea>
-        <button id="apply-code"> Apply code</button>
-    </div> -->
+    <!-- BLOCCO PER L'UPLOAD
+    <button id="load">Load your Code</button>
+        <div id="code-input">
+            <textarea id="html-input" placeholder="paste your html here"></textarea>
+            <textarea id="css-input" placeholder="paste your css here"></textarea>
+            <button id="apply-code"> Apply code</button>
+        </div> -->
 </div>
 <div id="gjs">
     <h1 id="title">Web Editor</h1>
@@ -156,8 +156,8 @@ $conn->close();
 
 <div id="blocks"></div>
 
-<script src="web_editor_script.js">
-    /*
+<script src="web_editor_script.js"> </script>
+    <!--
     const editor = grapesjs.init ({
         container: "#gjs",
         fromElement: true,
@@ -203,8 +203,8 @@ $conn->close();
         }
     });
 
-     */
-
+     -->
+<script>
     // Carica il template nel GrapesJS
     var html = `<?php echo $template_data['html']; ?>`;
     var css = `<?php echo $template_data['css']; ?>`;
