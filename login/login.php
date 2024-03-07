@@ -48,7 +48,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             // Password non corretta
-            echo "Password errata.";
+            echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> OPS! Wrong password</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+                text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+                color: #333;
+            }
+        p {
+                color: #666;
+                margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Seems like you fatfingered your password</h1>
+        <p> Please insert again your passowrd <a href="main.php">here</a> </p>
+    </div>
+</body>
+</html>';
         }
     } else {
         // Utente non trovato nel database

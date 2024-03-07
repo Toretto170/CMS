@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die('Connessione fallita : ' . $conn->connect_error);
 }
 
-// Funzione per inserire o aggiornare un template nel database
+// Funzione per aggiornare un template nel database
 function saveTemplate($html, $css, $user_id, $template_id = null) {
     global $conn;
     // Escape dei dati prima dell'inserimento nel database per evitare SQL injection

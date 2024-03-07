@@ -41,7 +41,7 @@ $conn->close();
     <title>Template Collection</title>
     <style>
         /* CSS x tabella */
-        
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -65,12 +65,17 @@ $conn->close();
         <th>Actions</th>
     </tr>
     <?php
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row['id'] . "</td>";
-        echo "<td>" . $row['reg_date'] . "</td>";
-        echo "<td><a href='web_editor.php?id=" . $row['id'] . "'>Edit</a></td>";
-        echo "</tr>";
+  while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row['id'] . "</td>";
+    echo "<td>" . $row['reg_date'] . "</td>";
+    echo "<td>";
+    echo "<a href='web_editor.php?id=" . $row['id'] . "'>Edit</a>";
+    echo " | ";
+    echo "<a href='delete_template.php?id=" . $row['id'] . "'>Delete</a>";
+    echo "</td>";
+    echo "</tr>";
+
     }
     ?>
 </table>

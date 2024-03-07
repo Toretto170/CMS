@@ -137,10 +137,11 @@ $conn->close();
 </head>
 <body>
 <div id="top-bar">
-    <a href="./home.php"><img src="./img/home.png" id="home"></a>
-    <img src="./img/save.png" id="save">
+    <a href="home.php"><img src="img/home.png" id="home"></a>
+    <img src="img/save.png" id="save">
 
-<!-- login
+
+<!-- BLOCCO PER L'UPLOAD
 <button id="load">Load your Code</button>
     <div id="code-input">
         <textarea id="html-input" placeholder="paste your html here"></textarea>
@@ -226,8 +227,7 @@ $conn->close();
     });
 
     /*
-    Codice per l'upload 
-    
+        CODICE PER L'UPLOAD
     $('#load').on('click', function () {
         $('#code-input').show();
     });
@@ -245,7 +245,7 @@ $conn->close();
         $('#code-input').hide();
     });
 
-    */
+     */
 </script>
 </body>
 </html>
