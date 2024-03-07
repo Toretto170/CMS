@@ -69,3 +69,6 @@ body {
 a:visited {
     color: inherit;
 }
+.hover-menu li{
+    list-style: none;
+}

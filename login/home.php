@@ -19,13 +19,19 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 <body>
 <header>
     <div class="navbar">
-        <div class="logo"> <a href="#"> Homepage </a></div>
         <ul class="links">
             <li> <a href="home.php">Home</a></li>
             <li> <a href="web_editor.php">Web Editor</a></li>
             <li> <a href="collection_templates.php">Collection Templates</a></li>
         </ul>
-        <a href="#" class="action_btn"> Profile</a>
+        <div class="user">
+    <img src="img/user.png" id="user">
+    <div class="user-menu">
+        <ul class="hover-menu">
+            <li><a href="./logout.php">Logout</a></li>
+        </ul>
+    </div>
+    </div>
         <div class="toggle_btn">
             <i class="fa-solid fa-bars"></i>
         </div>
@@ -33,7 +39,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
             <li> <a href="home.php">Home</a></li>
             <li> <a href="web_editor.php">Web Editor</a></li>
             <li> <a href="collection_templates.php">Collection Templates</a></li>
-            <li><a href="#" class="action_btn"> Get Started</a></li>
+            <li><a href="./logout.php">Logout</a></li>
         </div>
     </div>
 </header>
