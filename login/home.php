@@ -48,7 +48,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     <section id="home">
         <h1> Welcome </h1>
         <p>
-            bla bla bla bla <br/> bla bla bla bla bla bla
+            This is a <br/> Landing Page
         </p>
     </section>
 </main>
