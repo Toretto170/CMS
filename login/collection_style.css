@@ -34,11 +34,11 @@ a:visited, a {
 .user-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Posiziona il menu sotto l'immagine */
+    top: 100%; 
     right: 20px;
-    background-color: #fff; /* Colore di sfondo del menu */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombra leggera per il menu */
-    z-index: 1; /* Assicura che il menu sia sovrapposto all'immagine */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
     border-radius: 5px;
 }
 .user{
@@ -60,5 +60,6 @@ a:visited, a {
     padding-left: 10px;
 }
 .hover-menu li{
+    padding-right: 11px;
     list-style: none;
 }

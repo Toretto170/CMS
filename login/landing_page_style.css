@@ -70,10 +70,10 @@ header {
 .user-menu {
   display: none;
   position: absolute;
-  top: 100%; /* Posiziona il menu sotto l'immagine */
+  top: 100%;
   padding: 20px;
-  background-color: #fff; /* Colore di sfondo del menu */
-  z-index: 1; /* Assicura che il menu sia sovrapposto all'immagine */
+  background-color: #fff;
+  z-index: 1;
   border-radius: 5px;
   right: 0;
 }
