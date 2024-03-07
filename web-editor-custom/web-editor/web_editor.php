@@ -3,7 +3,7 @@ session_start();
 
 // Check per vedere se l'utente si è autenticato
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: main.php");
+    header("location: ../main.php");
     exit;
 }
 
@@ -88,7 +88,7 @@ if ($result->num_rows != 1) {
 <body>
     <div class="container">
         <h1>Seems like the template you are looking for is vanished!</h1>
-        <p> Please create a new one <a href="web_editor.php">here</a> or choose another one of yours <a href="collection_templates.php">!</p>
+        <p> Please create a new one <a href="web_editor.php">here</a> or choose another one of yours <a href="../templates/collection_templates.php">!</p>
     </div>
 </body>
 </html>';
@@ -139,13 +139,13 @@ $conn->close();
 </head>
 <body>
 <div id="top-bar">
-    <a href="home.php"><img src="img/home.png" id="home"></a>
-    <img src="img/save.png" id="save">
+    <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
+    <img src="../img/save.png" id="save">
     <div class="user">
-    <img src="img/user.png" id="user">
+    <img src="../img/user.png" id="user">
     <div class="user-menu">
         <ul class="hover-menu">
-            <li><a href="./logout.php">Logout</a></li>
+            <li><a href="../pages/logout.php">Logout</a></li>
         </ul>
     </div>
     </div>

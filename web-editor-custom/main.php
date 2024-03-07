@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
         <div class="form-wrapper sign-in">
-            <form action="login.php" method="post">
+            <form action="./login/login.php" method="post">
                 <h2>Login</h2>
                 <div class="input-group">
                     <input type="text" name="login_username" required>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-wrapper sign-up">
-            <form action="register.php" method="post">
+            <form action="./login/register.php" method="post">
                 <h2>Sign Up</h2>
                 <div class="input-group">
                     <input type="text" name="username" required>
@@ -65,6 +65,6 @@
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./login/script.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 // Check per vedere se l'utente si è autenticato
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     // Utente già loggato, reindirizza alla pagina web_editor.php
-    header("location: home.php");
+    header("location: ../pages/home.php");
     exit;
 }
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $row['id'];
             // Reindirizzamento alla home
-            header("location: home.php");
+            header("location: ../pages/home.php");
             exit;
         } else {
             // Password non corretta
@@ -52,12 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> OPS! Wrong password</title>
-   <link rel="stylesheet" href="template_style.css">
+   <link rel="stylesheet" href="../templates/template_style.css">
 </head>
 <body>
     <div class="container">
         <h1> Seems like you fatfingered your password</h1>
-        <p> Please insert again your passowrd <a href="main.php">here</a> </p>
+        <p> Please insert again your passowrd <a href="../main.php">here</a> </p>
     </div>
 </body>
 </html>';
@@ -70,12 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email already taken</title>
-<link rel="stylesheet" href="template_style.css">
+<link rel="stylesheet" href="../templates/template_style.css">
 </head>
 <body>
     <div class="container">
         <h1>You shall not pass!</h1>
-        <p> Please Sign Up <a href="main.php">here</a> and come join us!</p>
+        <p> Please Sign Up <a href="../main.php">here</a> and come join us!</p>
     </div>
 </body>
 </html>';

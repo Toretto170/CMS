@@ -3,7 +3,7 @@ session_start();
 
 // Check per vedere se l'utente si è autenticato
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: main.php");
+    header("location: ../main.php");
     exit;
 }
 
@@ -44,13 +44,13 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="collection_style.css">
 </head>
 <body>
-<a href="home.php"><img src="img/home.png" id="home"></a>
+<a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
 <h1 class="title">Template Collection</h1>
 <div class="user">
-    <img src="img/user.png" id="user">
+    <img src="../img/user.png" id="user">
     <div class="user-menu">
         <ul class="hover-menu">
-            <li><a href="./logout.php">Logout</a></li>
+            <li><a href="../pages/logout.php">Logout</a></li>
         </ul>
     </div>
     </div>
@@ -66,9 +66,9 @@ $conn->close();
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['reg_date'] . "</td>";
     echo "<td>";
-    echo "<a href='web_editor.php?id=" . $row['id'] . "'> Edit</a>";
+    echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'> Edit</a>";
     echo " | ";
-    echo "<a href='delete_template.php?id=" . $row['id'] . "'>Delete</a>";
+    echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'>Delete</a>";
     echo "</td>";
     echo "</tr>";
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
-    header("location: main.php");
+    header("location: ../main.php");
     exit;
 }
 ?>
@@ -21,11 +21,11 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     <div class="navbar">
         <ul class="links">
             <li> <a href="home.php">Home</a></li>
-            <li> <a href="web_editor.php">Web Editor</a></li>
-            <li> <a href="collection_templates.php">Collection Templates</a></li>
+            <li> <a href="../web-editor/web_editor.php">Web Editor</a></li>
+            <li> <a href="../templates/collection_templates.php">Collection Templates</a></li>
         </ul>
         <div class="user">
-    <img src="img/user.png" id="user">
+    <img src="../img/user.png" id="user">
     <div class="user-menu">
         <ul class="hover-menu">
             <li><a href="./logout.php">Logout</a></li>
@@ -37,8 +37,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
         </div>
         <div class="dropdown_menu">
             <li> <a href="home.php">Home</a></li>
-            <li> <a href="web_editor.php">Web Editor</a></li>
-            <li> <a href="collection_templates.php">Collection Templates</a></li>
+            <li> <a href="../web-editor/web_editor.php">Web Editor</a></li>
+            <li> <a href="../templates/collection_templates.php">Collection Templates</a></li>
             <li><a href="./logout.php">Logout</a></li>
         </div>
     </div>

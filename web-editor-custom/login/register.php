@@ -32,12 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email already taken</title>
     
-  <link rel="stylesheet" href="template_style.css">
+  <link rel="stylesheet" href="../templates/template_style.css">
 </head>
 <body>
     <div class="container">
         <h1>Cannot complete the registration</h1>
-        <p>Your registration was unsuccessful. Please retry <a href="main.php">here</a> with a valid username/email.</p>
+        <p>Your registration was unsuccessful. Please retry <a href="../main.php">here</a> with a valid username/email.</p>
     </div>
 </body>
 </html>';
@@ -53,12 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email already taken</title>
-  <link rel="stylesheet" href="template_style.css">
+  <link rel="stylesheet" href="../templates/template_style.css">
 </head>
 <body>
     <div class="container">
         <h1>Cannot complete the registration</h1>
-        <p>Your registration was unsuccessful. Please retry <a href="main.php">here</a> with a valid username/email.</p>
+        <p>Your registration was unsuccessful. Please retry <a href="../main.php">here</a> with a valid username/email.</p>
     </div>
 </body>
 </html>';
@@ -74,12 +74,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Successful</title>
-  <link rel="stylesheet" href="template_style.css">
+  <link rel="stylesheet" href="../templates/template_style.css">
 </head>
 <body>
     <div class="container">
         <h1>Registration Successful</h1>
-        <p>Your registration was successful. You can now <a href="main.php">login</a> using your credentials.</p>
+        <p>Your registration was successful. You can now <a href="../main.php">login</a> using your credentials.</p>
     </div>
 </body>
 </html>

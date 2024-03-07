@@ -3,7 +3,7 @@ session_start();
 
 // Check per vedere se l'utente si è autenticato
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: main.php");
+    header("location: ../main.php");
     exit;
 }
 
@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
 <body>
     <div class="container">
         <h1>Template successfully deleted</h1>
-        <p> If you want to create a new one, click <a href="web_editor.php">here</a> or if you want to explore your templates click <a href="collection_templates.php">here</a> </p>
+        <p> If you want to create a new one, click <a href="../web-editor/web_editor.php">here</a> or if you want to explore your templates click <a href="collection_templates.php">here</a> </p>
     </div>
 </body>
 </html>';
