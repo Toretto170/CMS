@@ -41,25 +41,19 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Collection</title>
-    <style>
-        /* CSS x tabella */
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="collection_style.css">
 </head>
 <body>
-<h1>Template Collection</h1>
+<a href="home.php"><img src="img/home.png" id="home"></a>
+<h1 class="title">Template Collection</h1>
+<div class="user">
+    <img src="img/user.png" id="user">
+    <div class="user-menu">
+        <ul class="hover-menu">
+            <li><a href="./logout.php">Logout</a></li>
+        </ul>
+    </div>
+    </div>
 <table>
     <tr>
         <th>ID</th>
@@ -81,6 +75,5 @@ $conn->close();
     }
     ?>
 </table>
-<p><a href="home.php">Back to Home</a></p>
 </body>
 </html>

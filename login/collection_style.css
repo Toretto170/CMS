@@ -1,0 +1,61 @@
+body{
+    background-color: #444;
+
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+.title{
+    text-align: center;
+    color: white;
+    display: inline-block;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+a:visited, a {
+    color: inherit;
+}
+#user {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+.user-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Posiziona il menu sotto l'immagine */
+    right: 20px;
+    background-color: #fff; /* Colore di sfondo del menu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombra leggera per il menu */
+    z-index: 1; /* Assicura che il menu sia sovrapposto all'immagine */
+    border-radius: 5px;
+}
+.user{
+    position: relative;
+    padding-right: 30px;
+    float: right;
+}
+.user:hover .user-menu {
+    display: block;
+    z-index: 10;
+}
+.hover-menu{
+    padding-right: 20px;
+}
+#home {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    padding-left: 10px;
+}
