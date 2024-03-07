@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Database info
+// Connessione al db
 $host = '127.0.0.1';
 $username = 'root';
 $password = '';
 $database = 'login';
 
-// Creazione della connessione al database e validazione
+// Check della connessione
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die('Connessione fallita : ' . $conn->connect_error);
@@ -20,7 +20,7 @@ function saveTemplate($html, $css, $user_id, $template_id = null) {
     $html = mysqli_real_escape_string($conn, $html);
     $css = mysqli_real_escape_string($conn, $css);
 
-    // Verifica se il template esiste già nel database
+    // Check per vedere se un template è già presente nel db
     $sql_check_template = "SELECT id FROM templates WHERE html='$html' AND css='$css' AND user_id='$user_id'";
     $result_check_template = $conn->query($sql_check_template);
     if ($result_check_template && $result_check_template->num_rows > 0) {
@@ -28,7 +28,8 @@ function saveTemplate($html, $css, $user_id, $template_id = null) {
     }
 
     if ($template_id !== null) {
-        // Aggiornamento del template esistente
+
+        // Update del template esistente + check in caso di errore
         $sql = "UPDATE templates SET html='$html', css='$css', reg_date=NOW() WHERE id='$template_id' AND user_id='$user_id'";
         if ($conn->query($sql) === TRUE) {
             return true;

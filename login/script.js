@@ -1,3 +1,5 @@
+// script per il form di login / registrazione
+
 const signInBtnLink = document.querySelector('.signInBtn-link');
 const signUpBtnLink = document.querySelector('.signUpBtn-link');
 

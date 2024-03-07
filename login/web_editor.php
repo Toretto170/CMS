@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Verifica se l'utente è loggato
+// Check per vedere se l'utente si è autenticato
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: main.php");
     exit;
 }
 
-// Connessione al database
+// Connessione al DB
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -15,7 +15,7 @@ $dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica connessione
+// Check della connessione
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }

@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Verifica se l'utente è loggato
+// Check per vedere se l'utente si è autenticato
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: main.php");
     exit;
 }
 
-// Connessione al database
+// Connessione al db
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -15,12 +15,13 @@ $dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica connessione
+// Check della connessione
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-// Preleva i template dell'utente corrente dal database
+
+// Query per estrarre i template dell'utente
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT id, reg_date FROM templates WHERE user_id=? ORDER BY reg_date DESC";
 $stmt = $conn->prepare($sql);
@@ -33,6 +34,7 @@ $stmt->close();
 $conn->close();
 ?>
 
+<!-- Pagina della Collection dei Template -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

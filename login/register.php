@@ -1,6 +1,6 @@
 <?php
 
-// Connessione al database
+// Connessione al db
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -8,7 +8,7 @@ $dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica connessione
+// Check della connessione
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
@@ -91,6 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Chiudi la connessione
+// Chiusura della connessione
 $conn->close();
 

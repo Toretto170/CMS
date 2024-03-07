@@ -1,3 +1,6 @@
+<!-- PUNTO DI PARTENZA DEI FILE -->
+
+<!-- PAGINA DI LOGIN / REGISTRAZIONE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

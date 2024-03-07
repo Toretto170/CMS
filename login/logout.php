@@ -1,5 +1,4 @@
 <?php
-// Inizializza la sessione
 session_start();
 
 // Cancella tutte le variabili di sessione
@@ -17,6 +16,6 @@ if (ini_get("session.use_cookies")) {
 // Cancella la sessione
 session_destroy();
 
-// Reindirizza l'utente alla pagina di login o ad un'altra pagina di tua scelta
+// Reindirizza l'utente alla pagina di login
 header("location: main.php");
 exit;

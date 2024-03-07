@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verifica se l'utente è loggato
+// Check per vedere se l'utente si è autenticato
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: main.php");
     exit;

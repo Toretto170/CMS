@@ -1,3 +1,5 @@
+// SCRIPT PER L'INIZIALIZZAZIONE DI GRAPESJS
+
 const editor = grapesjs.init ({
     container: "#gjs",
     fromElement: true,
