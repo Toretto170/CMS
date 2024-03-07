@@ -141,6 +141,14 @@ $conn->close();
 <div id="top-bar">
     <a href="home.php"><img src="img/home.png" id="home"></a>
     <img src="img/save.png" id="save">
+    <div class="user">
+    <img src="img/user.png" id="user">
+    <div class="user-menu">
+        <ul class="hover-menu">
+            <li><a href="./logout.php">Logout</a></li>
+        </ul>
+    </div>
+    </div>
 
     <!-- BLOCCO PER L'UPLOAD
     <button id="load">Load your Code</button>
