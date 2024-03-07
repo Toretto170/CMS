@@ -42,10 +42,9 @@ if (isset($_GET['id'])) {
 <body>
     <div class="container">
         <h1>Template successfully deleted</h1>
-        <p> If you want to create a new one, click <a href="../web-editor/web_editor.php">here</a> or if you want to explore your templates click <a href="collection_templates.php">here</a> </p>
-    </div>
 </body>
 </html>';
+header("refresh:2;url=collection_templates.php");
     } else {
         echo "Errore durante l'eliminazione del template: " . $conn->error;
     }
