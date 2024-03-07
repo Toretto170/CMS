@@ -124,6 +124,8 @@ $stmt->close();
 $conn->close();
 ?>
 
+<!-- EDITOR DI GRAPESJS -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +142,6 @@ $conn->close();
     <a href="home.php"><img src="img/home.png" id="home"></a>
     <img src="img/save.png" id="save">
 
-
 <!-- BLOCCO PER L'UPLOAD
 <button id="load">Load your Code</button>
     <div id="code-input">
@@ -155,7 +156,8 @@ $conn->close();
 
 <div id="blocks"></div>
 
-<script>
+<script src="web_editor_script.js">
+    /*
     const editor = grapesjs.init ({
         container: "#gjs",
         fromElement: true,
@@ -200,6 +202,8 @@ $conn->close();
             ]
         }
     });
+
+     */
 
     // Carica il template nel GrapesJS
     var html = `<?php echo $template_data['html']; ?>`;

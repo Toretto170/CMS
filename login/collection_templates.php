@@ -70,7 +70,7 @@ $conn->close();
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['reg_date'] . "</td>";
     echo "<td>";
-    echo "<a href='web_editor.php?id=" . $row['id'] . "'>Edit</a>";
+    echo "<a href='web_editor.php?id=" . $row['id'] . "'> Edit</a>";
     echo " | ";
     echo "<a href='delete_template.php?id=" . $row['id'] . "'>Delete</a>";
     echo "</td>";
