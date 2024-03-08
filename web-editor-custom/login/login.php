@@ -26,6 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Preleva i dati inviati dal login
     $login_username = $_POST['login_username'];
     $login_password = $_POST['login_password'];
+    //Hash sulla password
+    $login_password = hash('sha256', $login_password);
 
     // Query x verificare le credenziali presenti nel db
     $sql = "SELECT id, password FROM users WHERE username=?";

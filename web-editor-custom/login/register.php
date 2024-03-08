@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-
+    //Hash sulla password
+    $password = hash('sha256', $password);
     // Controlla se l'username è già presente nel database
     $sql_check_username = "SELECT * FROM users WHERE username='$username'";
     $result_username = $conn->query($sql_check_username);
