@@ -39,6 +39,14 @@ if (isset($_GET['id'])) {
     <title>Template deleted</title>
 <link rel="stylesheet" href="template_style.css">
 </head>
+<style>
+body{
+    background-color: #444;
+}
+.container{
+    background-color: white;
+}
+</style>
 <body>
     <div class="container">
         <h1>Template successfully deleted</h1>
