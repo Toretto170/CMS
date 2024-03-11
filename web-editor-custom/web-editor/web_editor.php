@@ -11,15 +11,21 @@ include("../scripts/connection_db.php");
 
 // Se l'ID del template non è fornito, crea un nuovo template e ottieni l'ID
 if (!isset($_GET['id'])) {
+
+
     // Verifica se esiste già un template con HTML e CSS vuoti per l'utente corrente
     $user_id = $_SESSION['user_id'];
     $sql_check_template = "SELECT id FROM templates WHERE html='' AND css='' AND user_id='$user_id'";
     $result_check_template = $conn->query($sql_check_template);
     if ($result_check_template && $result_check_template->num_rows > 0) {
+
+
         // Se esiste già un template con HTML e CSS vuoti, ottieni il suo ID
         $row = $result_check_template->fetch_assoc();
         $template_id = $row['id'];
     } else {
+
+
         // Altrimenti, inserisci un nuovo template con HTML e CSS vuoti
         $sql = "INSERT INTO templates (html, css, user_id, reg_date) VALUES ('', '', ?, NOW())";
         $stmt = $conn->prepare($sql);
@@ -88,14 +94,18 @@ $template_data = $result->fetch_assoc();
 
 // Se i dati del form sono stati inviati, esegui l'aggiornamento del template
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POST['css']) && !empty($_POST['html']) && !empty($_POST['css'])) {
+
+
     // Assicurati che i dati siano stati inviati correttamente
     $html = $_POST['html'];
     $css = $_POST['css'];
+
 
     // Escape dei dati prima dell'inserimento nel database per evitare SQL injection
     $html = mysqli_real_escape_string($conn, $html);
     $css = mysqli_real_escape_string($conn, $css);
 
+    
     // Esegui un'operazione di aggiornamento del template nel database
     $sql_update_data = "UPDATE templates SET html=?, css=?, reg_date=NOW() WHERE id=? AND user_id=?";
     $stmt = $conn->prepare($sql_update_data);
