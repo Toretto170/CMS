@@ -13,14 +13,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #444; 
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://img.freepik.com/premium-photo/black-minimalist-wallpaper_889056-13045.jpg');
 }
 
 .wrapper {
     position: relative;
     width: 400px;
     height: 500px;
-    background: #000; 
+    background: #2f2f2f;
     border-radius: 20px;
     padding: 40px;
     overflow: hidden;
@@ -52,7 +54,7 @@ body {
 
 .wrapper .form-wrapper.sign-up {
     position: absolute;
-    top: 450px;
+    top: 451px;
     left: 0;
 }
 
