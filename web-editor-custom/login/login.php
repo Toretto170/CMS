@@ -37,39 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             // Password non corretta
-            echo '<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> OPS! Wrong password</title>
-   <link rel="stylesheet" href="../templates/template_style.css">
-</head>
-<body>
-    <div class="container">
-        <h1> Seems like you enter the wrong your password</h1>
-        <p> Please insert again your passowrd <a href="../main.php">here</a> </p>
-    </div>
-</body>
-</html>';
+           include("./errors/errors_login/error_password.html");
         }
     } else {
-        // Utente non trovato nel database
-        echo '<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email already taken</title>
-<link rel="stylesheet" href="../templates/template_style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>You shall not pass!</h1>
-        <p> Please Sign Up <a href="../main.php">here</a> and come join us!</p>
-    </div>
-</body>
-</html>';
+        // Email già presa
+        include("./errors/errors_login/error_email.html");
     }
 
     $stmt->close();
