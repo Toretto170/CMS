@@ -1,10 +1,10 @@
 <?php
-session_start(); 
+session_start();
 
 include("../scripts/connection_db.php");
 
 // Controllo se l'utente si è autenticato
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // Utente già autenticato, reindirizza alla pagina home.php
     header("location: ../pages/home.php");
     exit;
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // Utente trovato, verifica la password
         $row = $result->fetch_assoc();
-        if($login_password === $row['password']) {
+        if ($login_password === $row['password']) {
             // Password corretta, impostazione delle variabili di sessione
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $row['id'];
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             // Password non corretta
-           include("./errors/errors_login/error_password.html");
+            include("./errors/errors_login/error_password.html");
         }
     } else {
         // Email già presa

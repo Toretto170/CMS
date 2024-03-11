@@ -7,7 +7,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 }
 ?>
 
-
+ <!-- LANDING PAGE -->
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

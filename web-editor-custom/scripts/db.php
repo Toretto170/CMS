@@ -3,13 +3,17 @@ session_start();
 
 include("../scripts/connection_db.php");
 
+
 // Funzione per aggiornare un template nel database
 function saveTemplate($html, $css, $user_id, $template_id = null) {
     global $conn;
+
+
     // Esecuzione dell'escape dei dati prima dell'inserimento nel database per evitare SQL injection
     $html = mysqli_real_escape_string($conn, $html);
     $css = mysqli_real_escape_string($conn, $css);
 
+    
     // Controllo se un template è già presente nel db
     $sql_check_template = "SELECT id FROM templates WHERE html='$html' AND css='$css' AND user_id='$user_id'";
     $result_check_template = $conn->query($sql_check_template);
