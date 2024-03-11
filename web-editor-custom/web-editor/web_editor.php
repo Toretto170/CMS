@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POS
     $html = mysqli_real_escape_string($conn, $html);
     $css = mysqli_real_escape_string($conn, $css);
 
-    
+
     // Esegui un'operazione di aggiornamento del template nel database
     $sql_update_data = "UPDATE templates SET html=?, css=?, reg_date=NOW() WHERE id=? AND user_id=?";
     $stmt = $conn->prepare($sql_update_data);
@@ -124,9 +124,9 @@ $conn->close();
 ?>
 
 <!-- EDITOR DI GRAPESJS -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,34 +136,35 @@ $conn->close();
     <script src="//unpkg.com/grapesjs"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-<div id="top-bar">
-    <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
-    <img src="../img/save.png" id="save">
-    <div class="user">
-    <img src="../img/user.png" id="user">
-    <div class="user-menu">
-        <ul class="hover-menu">
-            <li><a href="../pages/logout.php">Logout</a></li>
-        </ul>
-    </div>
-    </div>
 
-    <!-- BLOCCO PER L'UPLOAD
+<body>
+    <div id="top-bar">
+        <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
+        <img src="../img/save.png" id="save">
+        <div class="user">
+            <img src="../img/user.png" id="user">
+            <div class="user-menu">
+                <ul class="hover-menu">
+                    <li><a href="../pages/logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BLOCCO PER L'UPLOAD
     <button id="load">Load your Code</button>
         <div id="code-input">
             <textarea id="html-input" placeholder="paste your html here"></textarea>
             <textarea id="css-input" placeholder="paste your css here"></textarea>
             <button id="apply-code"> Apply code</button>
         </div> -->
-</div>
-<div id="gjs">
-    <h1 id="title">Web Editor</h1>
-</div>
+    </div>
+    <div id="gjs">
+        <h1 id="title">Web Editor</h1>
+    </div>
 
-<div id="blocks"></div>
+    <div id="blocks"></div>
 
-<script src="web_editor_script.js"> </script>
+    <script src="web_editor_script.js"> </script>
     <!--
     const editor = grapesjs.init ({
         container: "#gjs",
@@ -211,52 +212,53 @@ $conn->close();
     });
 
      -->
-<script>
-    // Carica il template nel GrapesJS
-    var html = `<?php echo $template_data['html']; ?>`;
-    var css = `<?php echo $template_data['css']; ?>`;
-    editor.setComponents(html);
-    editor.setStyle(css);
+    <script>
+        // Carica il template nel GrapesJS
+        var html = `<?php echo $template_data['html']; ?>`;
+        var css = `<?php echo $template_data['css']; ?>`;
+        editor.setComponents(html);
+        editor.setStyle(css);
 
-    // Aggiungi l'evento click al pulsante "Save"
-    $('#save').on('click', function () {
-        var html = editor.getHtml();
-        var css = editor.getCss();
+        // Aggiungi l'evento click al pulsante "Save"
+        $('#save').on('click', function () {
+            var html = editor.getHtml();
+            var css = editor.getCss();
 
-        // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
-        $.ajax({
-            url: 'web_editor.php?id=<?php echo $template_id; ?>',
-            method: 'POST',
-            data: { html: html, css: css },
-            success: function (response) {
-                alert(response);
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
+            // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
+            $.ajax({
+                url: 'web_editor.php?id=<?php echo $template_id; ?>',
+                method: 'POST',
+                data: { html: html, css: css },
+                success: function (response) {
+                    alert(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
         });
-    });
 
-    /*
-        CODICE PER L'UPLOAD
-    $('#load').on('click', function () {
-        $('#code-input').show();
-    });
-
-    // Aggiungi l'evento click al pulsante "Apply Code"
-    $('#apply-code').on('click', function () {
-        var htmlCode = $('#html-input').val();
-        var cssCode = $('#css-input').val();
-
-        // Applica il codice HTML e CSS al web editor
-        editor.setComponents(htmlCode);
-        editor.setStyle(cssCode);
-
-        // Nascondi l'area di inserimento del codice
-        $('#code-input').hide();
-    });
-
-     */
-</script>
+        /*
+            CODICE PER L'UPLOAD
+        $('#load').on('click', function () {
+            $('#code-input').show();
+        });
+    
+        // Aggiungi l'evento click al pulsante "Apply Code"
+        $('#apply-code').on('click', function () {
+            var htmlCode = $('#html-input').val();
+            var cssCode = $('#css-input').val();
+    
+            // Applica il codice HTML e CSS al web editor
+            editor.setComponents(htmlCode);
+            editor.setStyle(cssCode);
+    
+            // Nascondi l'area di inserimento del codice
+            $('#code-input').hide();
+        });
+    
+         */
+    </script>
 </body>
+
 </html>
