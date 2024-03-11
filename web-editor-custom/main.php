@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="input-group">
-                    <input type="password" name="password" required>
+                <input type="password" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno una lettera maiuscola, una minuscola, un numero e deve essere lunga almeno 8 caratteri" required>
                     <label for="">Password</label>
                 </div>
 
