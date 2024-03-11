@@ -90,32 +90,9 @@ header {
   color: inherit;
 }
 
-/* .action_btn{
-  background-color: rgb(119, 123, 117);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: scale 0.2 ease;
-}
-
-.action_btn:hover{
-  scale: 1.05;
-  color: #fff;
-}
-
-.action_btn:active{
-  scale: 0.95;
-} */
-
 .dropdown_menu{
   display: none;
   position: absolute;
-  right: 2rem;
   top: 60px;
   height: 0;
   width: 175px;
@@ -128,14 +105,13 @@ header {
 }
 
 .dropdown_menu.open {
-  height: 161px;
+  height: 140px;
 }
 
 .dropdown_menu li {
-  padding: 0.7rem;
+  padding: 0.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
 }
 
 .dropdown_menu .action_btn{
