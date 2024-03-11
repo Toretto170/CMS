@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
-        <h1> Seems like you fatfingered your password</h1>
+        <h1> Seems like you enter the wrong your password</h1>
         <p> Please insert again your passowrd <a href="../main.php">here</a> </p>
     </div>
 </body>
