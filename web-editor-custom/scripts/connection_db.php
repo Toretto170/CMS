@@ -1,6 +1,6 @@
 <?php
 
-// Connessione al db
+// Connessione con il db
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";
@@ -8,7 +8,7 @@ $dbname = "login";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check della connessione con il db
+// Controllo della connessione con il db
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }

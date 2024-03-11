@@ -3,9 +3,9 @@ session_start();
 
 include("../scripts/connection_db.php");
 
-// Check per vedere se l'utente si è autenticato
+// Controllo se l'utente si è autenticato
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    // Utente già loggato, reindirizza alla pagina web_editor.php
+    // Utente già autenticato, reindirizza alla pagina home.php
     header("location: ../pages/home.php");
     exit;
 }
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Hash sulla password
     $login_password = hash('sha256', $login_password);
 
-    // Query x verificare le credenziali presenti nel db
+    // Query per verificare le credenziali presenti nel db
     $sql = "SELECT id, password FROM users WHERE username=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $login_username);

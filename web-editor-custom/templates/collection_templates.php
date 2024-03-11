@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Check per vedere se l'utente si è autenticato
+// Controllo se l'utente si è autenticato
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: ../main.php");
     exit;
@@ -18,12 +18,12 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Chiudi la connessione
+// Chiudi la connessione con il db
 $stmt->close();
 $conn->close();
 ?>
 
-<!-- Pagina della Collection dei Template -->
+<!--Pagina della collection templates-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

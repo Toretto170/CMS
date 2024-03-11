@@ -1,5 +1,6 @@
 <?php
 session_start();
+//Verifica se utente è già autenticato, altrimenti lo reindirizza alla pagina pricipale
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     header("location: ../main.php");
     exit;

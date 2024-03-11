@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     //Hash sulla password
     $password = hash('sha256', $password);
-    // Controlla se l'username è già presente nel database
+    // Controlla se il nome  è già presente nel database
     $sql_check_username = "SELECT * FROM users WHERE username='$username'";
     $result_username = $conn->query($sql_check_username);
     if ($result_username->num_rows > 0) {
@@ -175,6 +175,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Chiusura della connessione
+// Chiusura della connessione con il db
 $conn->close();
 
