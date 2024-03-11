@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-// Connessione al db
-$host = '127.0.0.1';
-$username = 'root';
-$password = '';
-$database = 'login';
-
-// Check della connessione
-$conn = new mysqli($host, $username, $password, $database);
-if ($conn->connect_error) {
-    die('Connessione fallita : ' . $conn->connect_error);
-}
+include("../scripts/connection_db.php");
 
 // Funzione per aggiornare un template nel database
 function saveTemplate($html, $css, $user_id, $template_id = null) {
