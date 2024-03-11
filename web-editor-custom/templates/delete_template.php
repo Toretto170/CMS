@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Check per vedere se l'utente si è autenticato
+// Verifica se utente è già autenticato, altrimenti lo reindirizza alla pagina principale
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: ../main.php");
     exit;
@@ -137,5 +137,5 @@ if (isset($_GET['id'])) {
     }
 } 
 
-// Chiudi la connessione
+// Chiudi la connessione con il db
 $conn->close();
