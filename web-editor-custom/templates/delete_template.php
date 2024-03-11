@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
 }
 
 #lower-side {
-  padding: 2em 2em 5em 2em;
+  padding: 2em 2em 1em 2em;
   background: #fff;
   display: block;
   border-bottom-right-radius: 8px;
@@ -83,7 +83,7 @@ if (isset($_GET['id'])) {
 }
 
 #message {
-  margin-top: -.5em;
+  margin-top: -.2em;
   color: #757575;
   letter-spacing: 1px;
 }
@@ -126,7 +126,6 @@ if (isset($_GET['id'])) {
     <p id="message">
       Template successfully deleted!
     </p>
-    <a href="../templates/collection_templates.php" id="contBtn">Continue</a>
   </div>
 </div>
 </html>
