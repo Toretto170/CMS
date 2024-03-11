@@ -133,11 +133,9 @@ if (isset($_GET['id'])) {
 ';
         header("refresh:2;url=collection_templates.php");
     } else {
-        echo "Errore durante l'eliminazione del template: " . $conn->error;
+        echo "Cannot deleted the template: " . $conn->error;
     }
-} else {
-    echo "ID del template non fornito.";
-}
+} 
 
 // Chiudi la connessione
 $conn->close();
