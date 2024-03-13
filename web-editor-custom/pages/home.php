@@ -1,10 +1,24 @@
 <?php
 session_start();
+
+include ("../scripts/connection_db.php");
 //Verifica se utente è già autenticato, altrimenti lo reindirizza alla pagina pricipale
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     header("location: ../main.php");
     exit;
 }
+
+// query per ottenere l'username e mostrarlo poi sulla landing page
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT username FROM users WHERE id=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$username = $row['username'];
+$stmt->close();
+
 ?>
 
  <!-- LANDING PAGE -->
@@ -48,7 +62,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 
 <main>
     <section id="home">
-        <h1> Welcome </h1>
+        <h1> Welcome  <?php echo $username; ?> </h1>
         <p>
             This is a <br/> Landing Page
         </p>
