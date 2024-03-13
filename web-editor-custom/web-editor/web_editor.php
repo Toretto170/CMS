@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
+// modulo di connessione con il db
 include("../scripts/connection_db.php");
 
 // Se l'ID del template non è fornito, crea un nuovo template e ottieni l'ID
