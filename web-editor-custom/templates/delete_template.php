@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("ii", $template_id, $_SESSION['user_id']);
 
     if ($stmt->execute()) {
-     include("template_deleted");
+     include("./template_deleted.html");
      
         header("refresh:2;url=collection_templates.php");
     } else {
