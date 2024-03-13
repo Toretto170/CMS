@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// modulo della connessione con il db
 include("../scripts/connection_db.php");
 
 
