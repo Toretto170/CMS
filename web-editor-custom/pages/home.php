@@ -21,8 +21,8 @@ $stmt->close();
 
 ?>
 
- <!-- LANDING PAGE -->
- 
+
+<!-- Landing Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,9 +62,9 @@ $stmt->close();
 
 <main>
     <section id="home">
-        <h1> Welcome  <?php echo $username; ?> </h1>
+        <h1> Welcome aboard, <?php echo $username; ?>! </h1>
         <p>
-            This is a <br/> Landing Page
+            We're thrilled to have you join our team<br/>We can't wait to see the amazing things we'll achieve together. <br/>
         </p>
     </section>
 </main>
