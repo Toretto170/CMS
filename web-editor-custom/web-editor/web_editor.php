@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POS
     $stmt = $conn->prepare($sql_update_data);
     $stmt->bind_param("ssii", $html, $css, $template_id, $_SESSION['user_id']);
     if ($stmt->execute()) {
-        echo "Template aggiornato con successo. \r\n";
+        echo "Template successfully saved. \r\n";
     } else {
         echo 'Errore: ' . $conn->error;
     }
