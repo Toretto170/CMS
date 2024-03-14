@@ -10,5 +10,5 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Controllo della connessione con il db
 if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }

@@ -10,15 +10,15 @@ $database = 'login';
 // Check della connessione
 $conn = new mysqli($host, $username, $password);
 if ($conn->connect_error) {
-    die('Connessione fallita : ' . $conn->connect_error);
+    die('Connection failed : ' . $conn->connect_error);
 }
 
 // Creazione del db
 $sql_create_database = "CREATE DATABASE IF NOT EXISTS $database";
 if ($conn->query($sql_create_database) === TRUE) {
-    echo "Database '$database' creato con successo.\r\n";
+    echo "Database '$database' successfully created.\r\n";
 } else {
-    echo "Errore nella creazione del database '$database': " . $conn->error;
+    echo "Error during database's creation '$database': " . $conn->error;
 }
 
 // Selezione del database
@@ -36,9 +36,9 @@ $sql_create_users_table = "CREATE TABLE IF NOT EXISTS users (
 
 // check per vedere se la tabella users è stata creata con successo oppure no
 if ($conn->query($sql_create_users_table) === TRUE) {
-    echo "Tabella 'users' creata con successo.\r\n";
+    echo "Table 'users' successfully created.\r\n";
 } else {
-    echo "Errore nella creazione della tabella 'users': " . $conn->error;
+    echo "Error during the creation of the table 'users': " . $conn->error;
 }
 
 // Creazione della tabella 'templates'
@@ -54,9 +54,9 @@ $sql_create_templates_table = "CREATE TABLE IF NOT EXISTS templates (
 
 // check per vedere se la tabella templates è stata creata con successo
 if ($conn->query($sql_create_templates_table) === TRUE) {
-    echo "Tabella 'templates' creata con successo.\r\n";
+    echo "Table 'templates' successfully created.\r\n";
 } else {
-    echo "Errore nella creazione della tabella 'templates': " . $conn->error;
+    echo "Error during the creation of the table 'templates': " . $conn->error;
 }
 
 // chiusura della connessione

@@ -5,7 +5,7 @@ session_start();
 include("../scripts/connection_db.php");
 
 
-// Funzione per aggiornare un template nel database
+// Funzione per salvare un template nel database
 function saveTemplate($html, $css, $user_id, $template_id = null) {
     global $conn;
 
@@ -22,9 +22,10 @@ function saveTemplate($html, $css, $user_id, $template_id = null) {
         return 'Il template esiste già nel database.';
     }
 
+    // se l'id del template non è null, allora ...
     if ($template_id !== null) {
 
-        // Aggiornamento del template esistente e controllo in caso di errore
+        // ... fa l'aggiornamento del template esistente e controllo in caso di errore
         $sql = "UPDATE templates SET html='$html', css='$css', reg_date=NOW() WHERE id='$template_id' AND user_id='$user_id'";
         if ($conn->query($sql) === TRUE) {
             return true;
@@ -32,6 +33,6 @@ function saveTemplate($html, $css, $user_id, $template_id = null) {
             return 'Errore: ' . $sql . '<br>' . $conn->error;
         }
     } else {
-        return 'Template non specificato per l\'inserimento.';
+        return 'Impossibile aggiornare il template';
     }
 }

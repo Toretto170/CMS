@@ -39,9 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
             if ($conn->query($sql) === TRUE) {
+
+                // modulo: pagina account_created.html che mostra il successo nella creazione dell'utente 
                 include ("account_created.html");
+
             } else {
-                echo "Errore durante la registrazione: " . $conn->error;
+                echo "Something went wrong during the registration process: " . $conn->error;
             }
         }
     }
