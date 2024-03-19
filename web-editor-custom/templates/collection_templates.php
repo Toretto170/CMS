@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-// Controllo se l'utente si è autenticato
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: ../main.php");
-    exit;
-}
+include("../modules/authentication_user.php");
 
 // modulo di connessione con il db
 include ("../scripts/connection_db.php");

@@ -2,11 +2,7 @@
 session_start();
 
 include ("../scripts/connection_db.php");
-//Verifica se utente è già autenticato, altrimenti lo reindirizza alla pagina pricipale
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
-    header("location: ../main.php");
-    exit;
-}
+include ("../modules/authentication_user.php");
 
 // query per ottenere l'username e mostrarlo poi sulla landing page
 $user_id = $_SESSION['user_id'];

@@ -1,18 +1,15 @@
 <?php
 session_start();
 
-// Verifica se utente è già autenticato, altrimenti lo reindirizza alla pagina principale
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: ../main.php");
-    exit;
-}
+// modulo di autenticazione dell'utente
+include("../modules/authentication_user.php");
 
 // modulo della connessione con il db
 include("../scripts/connection_db.php");
 
+
 // Verifica se l'ID del template è stato fornito nella richiesta GET
 if (isset($_GET['id'])) {
-
 
     // Escape dell'ID del template per evitare SQL injection
     $template_id = mysqli_real_escape_string($conn, $_GET['id']);
