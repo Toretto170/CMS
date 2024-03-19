@@ -1,6 +1,6 @@
 <?php
 
-include("../scripts/connection_db.php");
+include("../modules/connection_db.php");
 
 // Gestione dei dati del form di registrazione
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

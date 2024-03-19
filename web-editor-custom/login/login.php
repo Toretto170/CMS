@@ -2,7 +2,7 @@
 session_start();
 
 // modulo della connessione al db
-include("../scripts/connection_db.php");
+include("../modules/connection_db.php");
 
 // Controllo se l'utente si è autenticato
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {

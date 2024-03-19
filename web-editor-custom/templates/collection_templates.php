@@ -4,7 +4,7 @@ session_start();
 include("../modules/authentication_user.php");
 
 // modulo di connessione con il db
-include ("../scripts/connection_db.php");
+include ("../modules/connection_db.php");
 
 
 // Query per estrarre i template dell'utente

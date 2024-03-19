@@ -5,7 +5,7 @@ session_start();
 include("../modules/authentication_user.php");
 
 // modulo della connessione con il db
-include("../scripts/connection_db.php");
+include("../modules/connection_db.php");
 
 
 // Verifica se l'ID del template è stato fornito nella richiesta GET

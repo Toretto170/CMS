@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include ("../scripts/connection_db.php");
+include ("../modules/connection_db.php");
 include ("../modules/authentication_user.php");
 
 // query per ottenere l'username e mostrarlo poi sulla landing page
