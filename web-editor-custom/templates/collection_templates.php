@@ -1,4 +1,5 @@
 <?php
+global $conn;
 session_start();
 
 include("../modules/authentication_user.php");
@@ -39,7 +40,7 @@ $conn->close();
             <li><a href="../pages/logout.php">Logout</a></li>
         </ul>
     </div>
-    </div>
+</div>
 <table>
     <tr>
         <th>ID</th>
@@ -47,17 +48,18 @@ $conn->close();
         <th>Actions</th>
     </tr>
     <?php
-  while ($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>" . $row['id'] . "</td>";
-    echo "<td>" . $row['reg_date'] . "</td>";
-    echo "<td>";
-    echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'> Edit</a>";
-    echo " | ";
-    echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'>Delete</a>";
-    echo "</td>";
-    echo "</tr>";
-
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['reg_date'] . "</td>";
+        echo "<td>";
+        echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'>Edit</a>";
+        echo " | ";
+        echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'>Delete</a>";
+        echo " | ";
+        echo "<a href='../templates/duplicate_template.php?id=" . $row['id'] . "'>Duplicate</a>";
+        echo "</td>";
+        echo "</tr>";
     }
     ?>
 </table>
