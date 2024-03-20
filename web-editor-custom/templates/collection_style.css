@@ -6,17 +6,32 @@ body{
 }
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 91%;
+    margin-left: 50px;
+    margin-top: 100px;
     background-color: white;
     border-radius: 20px;
 }
 th, td {
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
+td{
+    border-radius: 20px;
+
+}
+.th_id {
+    border-top-left-radius: 20px;
+}
+
+.th_actions {
+    border-top-right-radius: 20px;
+}
+
 th {
     background-color: #f2f2f2;
 }
+
 .title{
     text-align: center;
     color: white;
@@ -24,6 +39,7 @@ th {
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    font-family: 'Open Sans', sans-serif;
 }
 a:visited, a {
     color: inherit;
