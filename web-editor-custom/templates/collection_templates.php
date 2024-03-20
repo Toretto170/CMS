@@ -43,9 +43,9 @@ $conn->close();
 </div>
 <table>
     <tr>
-        <th>ID</th>
+        <th class="th_id">ID</th>
         <th>Last Save</th>
-        <th>Actions</th>
+        <th class="th_actions">Actions</th>
     </tr>
     <?php
     while ($row = $result->fetch_assoc()) {
