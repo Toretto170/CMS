@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Controlla se la password non coincide
         if ($login_password !== $row['password']) {
             // Imposta il messaggio di errore nella variabile di sessione
-            $_SESSION['error_message'] = "Incorrect email or password";
+            $_SESSION['error_message'] = "Incorrect username or password";
         } else {
             // La password coincide, definisce la sessione
             $_SESSION['loggedin'] = true;
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // L'utente non è trovato, imposta il messaggio di errore
-        $_SESSION['error_message'] = "Incorrect email or password";
+        $_SESSION['error_message'] = "Incorrect username or password";
     }
 
     // Chiude la connessione e il prepared statement

@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['success_message'] = "Registration successful!";
             // Alert per la registrazione avvenuta con successo
             echo "<script>alert('Registration successful!');</script>";
+            
         } else {
             $_SESSION['error_message'] = "Something went wrong during the registration process: " . $stmt->error;
             // Alert per un errore durante la registrazione
