@@ -1,9 +1,10 @@
 /* Regole di stile per vedere template precedenti */
 
-body{
+body {
     background-color: #444;
 
 }
+
 table {
     border-collapse: collapse;
     width: 91%;
@@ -12,14 +13,18 @@ table {
     background-color: white;
     border-radius: 20px;
 }
-th, td {
+
+th,
+td {
     text-align: center;
     padding: 8px;
 }
-td{
+
+td {
     border-radius: 20px;
 
 }
+
 .th_id {
     border-top-left-radius: 20px;
 }
@@ -32,7 +37,7 @@ th {
     background-color: #f2f2f2;
 }
 
-.title{
+.title {
     text-align: center;
     color: white;
     display: inline-block;
@@ -41,18 +46,22 @@ th {
     position: absolute;
     font-family: 'Open Sans', sans-serif;
 }
-a:visited, a {
+
+a:visited,
+a {
     color: inherit;
 }
+
 #user {
     cursor: pointer;
     height: 50px;
     width: 50px;
 }
+
 .user-menu {
     display: none;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     right: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -60,28 +69,34 @@ a:visited, a {
     border-radius: 5px;
     color: black;
 }
-.user{
+
+.user {
     position: relative;
     padding-right: 30px;
     float: right;
 }
+
 .user:hover .user-menu {
     display: block;
     z-index: 10;
 }
-.hover-menu{
+
+.hover-menu {
     padding-right: 20px;
 }
+
 #home {
     cursor: pointer;
     height: 50px;
     width: 50px;
     padding-left: 10px;
 }
-.hover-menu li{
+
+.hover-menu li {
     padding-right: 11px;
     list-style: none;
 }
-.user-menu a{
+
+.user-menu a {
     text-decoration: none;
 }
