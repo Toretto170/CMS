@@ -2,14 +2,14 @@
 session_start();
 
 // Controllo se l'utente è già autenticato
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+if (isset ($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // Reindirizza alla pagina home.php se l'utente è già autenticato
     header("location: ../pages/home.php");
     exit;
 }
 
 // Modulo della connessione al database
-include("../modules/connection_db.php");
+include ("../modules/connection_db.php");
 
 // Gestione dei dati del form di login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

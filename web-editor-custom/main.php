@@ -39,7 +39,7 @@ session_destroy();
 <head>
 
     <!-- Per modificare l'icona nella tab del browser -->
-    <link rel="icon" href="img/login.png" type="image/png">
+    <!-- <link rel="icon" href="img/login.png" type="image/png"> -->
     <!-- --------------------------------------------- -->
 
     <meta charset="UTF-8">
