@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-// modulo della connessione al db
-include("../modules/connection_db.php");
-
-// Controllo se l'utente si è autenticato
+// Controllo se l'utente è già autenticato
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-
-    // se l'utente è già autenticato, lo reindirizza alla pagina home.php
+    // Reindirizza alla pagina home.php se l'utente è già autenticato
     header("location: ../pages/home.php");
     exit;
 }
+
+// Modulo della connessione al database
+include("../modules/connection_db.php");
 
 // Gestione dei dati del form di login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_username = $_POST['login_username'];
     $login_password = $_POST['login_password'];
 
-    //Hashing della password
+    // Hashing della password
     $login_password = hash('sha256', $login_password);
 
     // Query per verificare le credenziali presenti nel db
@@ -29,34 +28,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // check per vedere se la query restituisce un record. Se trova un record -->
+    // Controlla se la query restituisce un record
     if ($result->num_rows == 1) {
-
         // Utente trovato, verifica la password
         $row = $result->fetch_assoc();
 
-        // se la password coincide allora definisce la sessione 
-        if ($login_password === $row['password']) {
+        // Controlla se la password non coincide
+        if ($login_password !== $row['password']) {
+            // Imposta il messaggio di errore nella variabile di sessione
+            $_SESSION['error_message'] = "Incorrect email or password";
+        } else {
+            // La password coincide, definisce la sessione
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $row['id'];
-
             // Reindirizzamento alla home
             header("location: ../pages/home.php");
             exit;
-
-        // se la password non è corretta, reindirizza alla pagina error_password
-        } else {
-
-            // Modulo: pagina html dell'errore con la password (password sbagliata)
-            include("./errors/errors_login/error_password.html");
         }
     } else {
-        // Modulo: pagina html dell'errore con la mail (email sbagliata)
-        include("./errors/errors_login/error_email.html");
+        // L'utente non è trovato, imposta il messaggio di errore
+        $_SESSION['error_message'] = "Incorrect email or password";
     }
 
+    // Chiude la connessione e il prepared statement
     $stmt->close();
+    $conn->close();
 }
 
-$conn->close();
-
+// Reindirizza a main.php dopo il controllo
+header("location: ../main.php");
+exit;
