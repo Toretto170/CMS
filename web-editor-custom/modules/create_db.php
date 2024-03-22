@@ -44,7 +44,7 @@ if ($conn->query($sql_create_users_table) === TRUE) {
 // Creazione della tabella 'templates'
 $sql_create_templates_table = "CREATE TABLE IF NOT EXISTS templates (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NULL,
+            name VARCHAR(255) NOT NULL,
             html LONGTEXT NOT NULL,
             css LONGTEXT NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
