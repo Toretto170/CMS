@@ -29,6 +29,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Collection</title>
     <link rel="stylesheet" type="text/css" href="collection_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
@@ -52,12 +53,10 @@ $conn->close();
         echo "<tr>";
         echo "<td>" . $row['id'] . "</td>";
         echo "<td>" . $row['reg_date'] . "</td>";
-        echo "<td>";
-        echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'>Edit</a>";
-        echo " | ";
-        echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'>Delete</a>";
-        echo " | ";
-        echo "<a href='../templates/duplicate_template.php?id=" . $row['id'] . "'>Duplicate</a>";
+        echo  "<td>";
+        echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'><i class='fas fa-edit'></i></a> | ";
+        echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'><i class='fas fa-trash-alt'></i></a> | ";
+        echo "<a href='../templates/duplicate_template.php?id=" . $row['id'] . "'><i class='fas fa-copy'></i></a>";
         echo "</td>";
         echo "</tr>";
     }
