@@ -10,7 +10,7 @@ include ("../modules/connection_db.php");
 
 // Query per estrarre i template dell'utente
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT id, reg_date FROM templates WHERE user_id=? ORDER BY reg_date DESC";
+$sql = "SELECT id, name, reg_date FROM templates WHERE user_id=? ORDER BY reg_date DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -44,14 +44,15 @@ $conn->close();
 </div>
 <table>
     <tr>
-        <th class="th_id">ID</th>
+        <th class="th_template-name">Template Name</th>
         <th>Last Save</th>
         <th class="th_actions">Actions</th>
     </tr>
     <?php
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row['id'] . "</td>";
+        // Rendi il nome del template un link che reindirizza l'utente al template selezionato
+        echo "<td><a href='../web-editor/web_editor.php?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
         echo "<td>" . $row['reg_date'] . "</td>";
         echo  "<td>";
         echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'><i class='fas fa-edit'></i></a> | ";
