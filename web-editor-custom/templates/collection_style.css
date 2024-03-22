@@ -2,8 +2,11 @@
 
 /* Impostazioni generali */
 body {
-    background-color: #444; 
-    background-image: url('https://www.pixel4k.com/wp-content/uploads/2020/08/dark-abstract-black-minimal_1596927735.jpg.webp'); 
+    height: 100vh;
+    background-color: #444;
+    background-image: url('https://www.pixel4k.com/wp-content/uploads/2020/08/dark-abstract-black-minimal_1596927735.jpg.webp');
+    background-size: cover;
+    background-position: center; 
 }
 
 /* Stile del titolo */
