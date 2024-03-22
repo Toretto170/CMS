@@ -34,8 +34,8 @@ include("../modules/template_manager.php");
 <body>
 <div id="top-bar">
     <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
-    <img src="../img/save.png" id="save">
     <input type="text" id="template-name" placeholder="Enter template name">
+    <img src="../img/save.png" id="save">
     <div class="user">
         <img src="../img/user.png" id="user">
         <div class="user-menu">
