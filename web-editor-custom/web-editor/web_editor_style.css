@@ -1,55 +1,64 @@
+/* Impostazioni generali */
 #gjs {
-    border: 3px solid #444;
+    border: 3px solid #444; 
 }
 
-.h1
-
+/* Regolazioni per l'editor */
 .gjs-cv-canvas {
-    top:0;
+    top:0; 
     width: 100%;
     height: 100%;
 }
 
+/* Stile dei blocchi dell'editor */
 .gjs-block {
     width: auto;
     height: auto;
     min-height: auto;
     margin: 23px;
     border-radius: 8px;
-    background-color: #443;
-
+    background-color: #443; 
 }
 
+/* Impostazioni globali */
 body {
     margin: 0;
     height: 100%;
-    background-color: #4444;
+    background-color: #4444; 
 }
 
+/* Barra superiore */
 #top-bar {
     background-color: #444;
     width: 100%;
     height: 50px;
 }
 
+/* Icona home */
 #home {
     cursor: pointer;
     height: 50px;
     width: 50px;
     padding-left: 10px;
 }
+
+/* Wrapper per il pulsante di salvataggio */
 #save-wrapper{
     position: absolute;
     align-items: center;
-    margin-left: 35%;
+    margin-left: 35%; 
     top: 0px;
 }
+
+/* Pulsante di salvataggio */
 #save {
     cursor: pointer;
     height: 50px;
     width: 50px;
     vertical-align: middle;
 }
+
+/* Nome del template */
 #template-name{
     font-size: 24px;
     height: 35px;
@@ -59,15 +68,19 @@ body {
     border-radius: 5px;
     vertical-align: middle;
 }
+
+/* Icona utente */
 #user {
     cursor: pointer;
     height: 50px;
     width: 50px;
 }
+
+/* Menu utente */
 .user-menu {
     display: none;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     right: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
@@ -75,25 +88,37 @@ body {
     border-radius: 5px;
     color: black;
 }
+
+/* Contenitore utente */
 .user{
     position: relative;
     padding-right: 30px;
     float: right;
 }
+
+/* Visualizzazione del menu utente al passaggio del mouse */
 .user:hover .user-menu {
     display: block;
     z-index: 10;
 }
-.hover-menu{
-    padding-right: 20px;
-}
+
+/* Stile dei link visitati */
 a:visited {
     color: inherit;
 }
+
+/* Elemento del menu utente */
+.hover-menu{
+    padding-right: 20px;
+}
+
+/* Elemento del menu utente */
 .hover-menu li{
     padding-right: 11px;
     list-style: none;
 }
+
+/* Stile dei link nel menu utente */
 .user-menu a{
     text-decoration: none;
 }
