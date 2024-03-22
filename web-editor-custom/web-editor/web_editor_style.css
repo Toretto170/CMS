@@ -33,25 +33,26 @@ body {
     width: 50px;
     padding-left: 10px;
 }
-
+#save-wrapper{
+    position: absolute;
+    align-items: center;
+    margin-left: 35%;
+    top: 0px;
+}
 #save {
     cursor: pointer;
     height: 50px;
     width: 50px;
-    padding-left: 10px;
-    position: absolute;
-    margin-left: 46%;
+    vertical-align: middle;
 }
 #template-name{
-    top: 5px;
-    margin-left: 30%;
     font-size: 24px;
     height: 35px;
     background-color: #444;
     color: #fff;
     border: 2px solid #fff;
-    position: absolute;
     border-radius: 5px;
+    vertical-align: middle;
 }
 #user {
     cursor: pointer;
