@@ -5,7 +5,7 @@ session_start();
 include("../modules/authentication_user.php");
 
 // modulo di connessione con il db
-include ("../modules/connection_db.php");
+include("../modules/connection_db.php");
 
 
 // Query per estrarre i template dell'utente
@@ -27,13 +27,16 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Collection</title>
+    <title>Collection Templates</title>
     <link rel="stylesheet" type="text/css" href="collection_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Per modificare l'icona nella tab del browser -->
+    <link rel="icon" href="../img/collection.png" type="image/png">
+    <!-- --------------------------------------------- -->
 </head>
 <body>
 <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
-<h1 class="title">Template Collection</h1>
+<h1 class="title">Collection Templates</h1>
 <div class="user">
     <img src="../img/user.png" id="user">
     <div class="user-menu">
@@ -54,9 +57,9 @@ $conn->close();
         // Rendi il nome del template un link che reindirizza l'utente al template selezionato
         echo "<td><a href='../web-editor/web_editor.php?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
         echo "<td>" . $row['reg_date'] . "</td>";
-        echo  "<td>";
-        echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'><i class='fas fa-edit'></i></a> | ";
-        echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'><i class='fas fa-trash-alt'></i></a> | ";
+        echo "<td>";
+        echo "<a href='../web-editor/web_editor.php?id=" . $row['id'] . "'><i class='fas fa-edit'></i></a> ";
+        echo "<a href='../templates/delete_template.php?id=" . $row['id'] . "'><i class='fas fa-trash-alt'></i></a>  ";
         echo "<a href='../templates/duplicate_template.php?id=" . $row['id'] . "'><i class='fas fa-copy'></i></a>";
         echo "</td>";
         echo "</tr>";

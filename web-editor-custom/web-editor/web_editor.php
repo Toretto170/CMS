@@ -35,8 +35,8 @@ include("../modules/template_manager.php");
 <div id="top-bar">
     <a href="../pages/home.php"><img src="../img/home.png" id="home"></a>
     <div id="save-wrapper">
-    <input type="text" id="template-name" placeholder="Enter template name">
-    <img src="../img/save.png" id="save">
+        <input type="text" id="template-name" placeholder="Enter template name">
+        <img src="../img/save.png" id="save">
     </div>
     <div class="user">
         <img src="../img/user.png" id="user">
@@ -73,13 +73,13 @@ include("../modules/template_manager.php");
     $('#save').on('click', function () {
         var html = editor.getHtml();
         var css = editor.getCss();
-        var templateName = $('#template-name').val(); // Ottieni il nome del template dall'input
+        var templateName = $('#template-name').val(); 
 
         // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
         $.ajax({
             url: 'web_editor.php?id=<?php echo $template_id; ?>',
             method: 'POST',
-            data: { html: html, css: css, name: templateName }, // Includi il nome del template nella richiesta
+            data: { html: html, css: css, name: templateName },
             success: function (response) {
                 alert(response);
             },
