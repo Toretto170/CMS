@@ -44,6 +44,19 @@ body {
     height: 50px;
     width: 50px;
     padding-left: 10px;
+    position: absolute;
+    margin-left: 46%;
+}
+#template-name{
+    top: 5px;
+    margin-left: 30%;
+    font-size: 24px;
+    height: 35px;
+    background-color: #444;
+    color: #fff;
+    border: 2px solid #fff;
+    position: absolute;
+    border-radius: 5px;
 }
 #user {
     cursor: pointer;
