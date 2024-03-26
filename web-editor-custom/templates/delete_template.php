@@ -20,7 +20,8 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("ii", $template_id, $_SESSION['user_id']);
 
     if ($stmt->execute()) {
-     include("./template_deleted.html");
+     echo "<script>alert('Template successfully deleted ');</script>";
+     
      
         header("refresh:2;url=collection_templates.php");
     } else {
