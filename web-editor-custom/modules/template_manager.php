@@ -1,6 +1,8 @@
 <?php
-// Includi il file di connessione al database
-include ("connection_db.php");
+global $conn;
+
+// Modulo di connessione al db
+include("connection_db.php");
 
 // Se l'ID del template non è fornito, crea un nuovo template e ottiene l'ID
 if (!isset ($_GET['id'])) {
@@ -8,7 +10,6 @@ if (!isset ($_GET['id'])) {
     $user_id = $_SESSION['user_id'];
     // Query per controllare se esiste un template vuoto per l'utente corrente
     $sql_check_template = "SELECT id FROM templates WHERE html='' AND css='' AND user_id='$user_id'";
-    // Esegui la query
     $result_check_template = $conn->query($sql_check_template);
 
     // Se trova un risultato, ottiene l'ID del template
@@ -81,14 +82,14 @@ if ($result->num_rows != 1) {
     </div>
     </body>
     </html>';
-    // Interrompi l'esecuzione dello script
+
     exit;
 }
 
-// Ottieni i dati del template
+
 $template_data = $result->fetch_assoc();
 
-// Se i dati del form sono stati inviati, esegui l'aggiornamento del template
+// Se i dati del form sono stati inviati, esegue l'aggiornamento del template
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST) && isset ($_POST['html']) && isset ($_POST['css']) && isset ($_POST['name']) && !empty ($_POST['html']) && !empty ($_POST['css'])) {
     // Controlla se è stato fornito un nome per il template
     if (empty ($_POST['name'])) {
@@ -97,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST) && isset ($_POST['htm
         exit;
     }
 
-    // Ottieni i dati inviati tramite il form
+    // Ottiene i dati inviati tramite il form
     $html = $_POST['html'];
     $css = $_POST['css'];
     $templateName = $_POST['name'];
@@ -116,6 +117,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST) && isset ($_POST['htm
     } else {
         echo 'Error: ' . $conn->error;
     }
-    // Interrompi l'esecuzione dello script
     exit;
 }
