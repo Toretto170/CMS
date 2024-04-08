@@ -2,6 +2,7 @@
 global $conn;
 session_start();
 
+// modulo di autenticazione dell'utente
 include("../modules/authentication_user.php");
 
 // modulo di connessione con il db
@@ -54,7 +55,7 @@ $conn->close();
     <?php
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        // Rendi il nome del template un link che reindirizza l'utente al template selezionato
+        // Rende il nome del template un link che reindirizza l'utente al template selezionato
         echo "<td><a href='../web-editor/web_editor.php?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
         echo "<td>" . $row['reg_date'] . "</td>";
         echo "<td>";
