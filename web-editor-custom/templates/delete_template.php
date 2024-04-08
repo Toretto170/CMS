@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
      echo "<script>alert('Template successfully deleted ');</script>";
      
      
-        header("refresh:2;url=collection_templates.php");
+        header("refresh:0;url=collection_templates.php");
     } else {
         echo "Cannot deleted the template: " . $conn->error;
     }
