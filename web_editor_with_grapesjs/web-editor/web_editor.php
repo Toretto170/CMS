@@ -57,6 +57,7 @@ include("../modules/template_manager.php");
     <link rel="stylesheet" type="text/css" href="web_editor_style.css">
     <script src="//unpkg.com/grapesjs"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js"></script>
 </head>
 
 <body>
@@ -348,14 +349,23 @@ include("../modules/template_manager.php");
         let html = editor.getHtml();
         let css = editor.getCss();
         let templateName = $('#template-name').val();
-
-
+        let iframe = document.querySelector("#gjs div div div div:nth-child(2) div iframe");
+        let dociframe = iframe.contentDocument || iframe.contentWindow.document;
+        let div = dociframe.querySelector("html");
+        function snapshot() {
+            html2canvas(div).then(function(canvas) {
+                    // Ottieni l'URL dell'immagine
+                    var imgData = canvas.toDataURL('image/png');
+                    return(imgData);
+            });
+        }
+        let imgURL = snapshot();      
 
         // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
         $.ajax({
             url: 'web_editor.php?id=<?php echo $template_id; ?>',
             method: 'POST',
-            data: { html: html, css: css, name: templateName },
+            data: { html: html, css: css, name: templateName, imgURL: imgURL },
             success: function (response) {
                 alert(response);
             },
