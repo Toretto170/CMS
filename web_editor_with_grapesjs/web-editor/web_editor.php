@@ -355,18 +355,25 @@ include("../modules/template_manager.php");
         let iframe = document.querySelector("#gjs div div div div:nth-child(2) div iframe");
         let dociframe = iframe.contentDocument || iframe.contentWindow.document;
         let div = dociframe.querySelector("html");
-        function snapshot() {
-            html2canvas(div).then(function(canvas) {
-                    // Ottieni l'URL dell'immagine
-                    var imgData = canvas.toDataURL('image/png');
-                console.log(imgData);
-                    return(imgData);
-            });
-        }
-        let imgURL = snapshot();
 
-        // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
-        $.ajax({
+        function snapshot() {
+    return new Promise(function(resolve, reject) {
+        html2canvas(div).then(function(canvas) {
+            // Ottieni l'URL dell'immagine
+            var imgData = canvas.toDataURL('image/png');
+            // Risolvi la Promise con l'URL dell'immagine
+            resolve(imgData);
+        }).catch(function(error) {
+            // Se c'è un errore durante la creazione del canvas, rifiuta la Promise
+            reject(error);
+        });
+    });
+}
+
+// Utilizza snapshot() per ottenere l'URL dell'immagine in modo asincrono
+snapshot().then(function(imgURL) {
+    // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
+    $.ajax({
             url: 'web_editor.php?id=<?php echo $template_id; ?>',
             method: 'POST',
             data: { html: html, css: css, name: templateName, imgURL: imgURL },
@@ -377,7 +384,12 @@ include("../modules/template_manager.php");
                 console.error(xhr.responseText);
             }
         });
-    });
+    // Puoi procedere con l'utilizzo di imgURL come desiderato, ad esempio passandolo alla funzione AJAX
+}).catch(function(error) {
+    // Gestisci eventuali errori qui
+    console.error("Error in snapshot():", error);
+});  
+});
 
 
     /*
