@@ -341,8 +341,11 @@ include("../modules/template_manager.php");
     // Carica il template nel GrapesJS
     let html = `<?php echo $template_data['html']; ?>`;
     let css = `<?php echo $template_data['css']; ?>`;
+    let imgURL = `<?php echo $template_data['imgURL']; ?>`;
     editor.setComponents(html);
     editor.setStyle(css);
+
+
 
     // Aggiunge l'evento click al pulsante "Save"
     $('#save').on('click', function () {
@@ -356,10 +359,11 @@ include("../modules/template_manager.php");
             html2canvas(div).then(function(canvas) {
                     // Ottieni l'URL dell'immagine
                     var imgData = canvas.toDataURL('image/png');
+                console.log(imgData);
                     return(imgData);
             });
         }
-        let imgURL = snapshot();      
+        let imgURL = snapshot();
 
         // Effettua una richiesta AJAX per salvare o aggiornare il template nel database
         $.ajax({

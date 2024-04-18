@@ -30,12 +30,10 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $template_id);
 $stmt->execute();
 $result = $stmt->get_result();
-
-
 $template_data = $result->fetch_assoc();
 
 // Se i dati del form sono stati inviati, esegui l'aggiornamento del template
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST) && isset($_POST['html']) && isset($_POST['css']) && isset($_POST['name']) && !empty($_POST['html']) && !empty($_POST['css'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['html']) && isset($_POST['css']) && isset($_POST['name']) && !empty($_POST['html']) && !empty($_POST['css'])) {
     // Assicurati che il nome del template sia stato fornito
     if (empty($_POST['name'])) {
         // Mostra un alert e interrompi l'esecuzione dello script
@@ -47,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST) && isset($_POST['html'
     $html = $_POST['html'];
     $css = $_POST['css'];
     $templateName = $_POST['name'];
-    //$imgURL = $_POST['imgURL'];
+
 
     // Escape dei dati prima dell'inserimento nel database per evitare SQL injection
     $html = mysqli_real_escape_string($conn, $html);
@@ -55,13 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST) && isset($_POST['html'
     $templateName = mysqli_real_escape_string($conn, $templateName);
 
     // Esegui un'operazione di aggiornamento del template nel database
-    $sql_update_data = "UPDATE templates SET html=?, css=?, name=?, reg_date=NOW(), imgURL=? WHERE id=? AND user_id=?";
+    $sql_update_data = "UPDATE templates SET html=?, css=?, name=?, reg_date=NOW(), imgURL = ? WHERE id=? AND user_id=?";
     $stmt = $conn->prepare($sql_update_data);
-    $stmt->bind_param("sssiis", $html, $css, $templateName, $template_id, $_SESSION['user_id'], $imgURL);
+    $stmt->bind_param("ssssii", $html, $css, $templateName, $imgURL, $template_id, $_SESSION['user_id']);
     if ($stmt->execute()) {
         echo "Template successfully saved. \r\n";
     } else {
-        echo 'Errore: ' . $conn->error;
+        echo 'Error: ' . $conn->error;
     }
     exit;
 }
