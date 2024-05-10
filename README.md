@@ -26,6 +26,7 @@ Visual Studio Code : An integrated Development environment(IDE) to execute the s
 Getting started the editor is a very simple. Just follow these this steps:
 
   git clone https://github.com/Toretto170/CMS.git
+
 Run the file create_db.php to costruct the database with the necessary table. You can locate this file under the modules directory.
 
 Open the file main.php in a preferred browser
