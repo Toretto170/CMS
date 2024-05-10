@@ -4,7 +4,7 @@ This project is a straighforward web editor levearing GrapesJs, an open-source f
 ## Main features
 Drag-and drop interface : Seamlessly craft custom layouts by simply dragging and droppping elements onto the canvas.
 
-Predefined Conponents: Access an extemsive array of prebuilt components like bottom, images, text blocks to streamline the page creation process.
+Predefined Conponents: Access an extemsive array of prebuilt components like buttom, images, text blocks to streamline the page creation process.
 
 Customization: Tailor the appearance and behavoir of elements by fine-tuning their styles,colors,and properties,offering unparalleled flexibility and control over the design.
 
